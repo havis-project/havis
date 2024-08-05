@@ -1,5 +1,6 @@
 package com.havis.object.member.model.entity;
 
+import com.havis.object.basetime.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -26,7 +27,6 @@ public class MemberEntity extends BaseTimeEntity {
     private String nickname;
 
     @Column(name = "level", nullable = false)
-    @ColumnDefault(value = "1")
     private int level;
 
     @Column(name = "name", nullable = false)
@@ -68,11 +68,13 @@ public class MemberEntity extends BaseTimeEntity {
         this.memberId = memberId;
         this.password = password;
         this.nickname = nickname;
+        this.level = 1;
         this.name = name;
         this.gender = gender;
         this.birthday = birthday;
         this.phone = phone;
         this.email = email;
         this.location = location;
+        this.role = RoleType.valueOf("USER");
     }
 }

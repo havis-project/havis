@@ -29,5 +29,7 @@ public class MemberService {
                 .email(signupDTO.getEmail())
                 .location(signupDTO.getLocation())
                 .build();
+
+        MemberEntity newMember = memberRepository.save(member);
     }
 }
