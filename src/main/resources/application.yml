@@ -7,9 +7,14 @@ spring:
     username: havis
     password: havis
   jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
     generate-ddl: false
     show-sql: true
     database: mysql
-    properties:
-      hibernate:
-        '[format_sql]': true
+logging:
+  level:
+    root: info

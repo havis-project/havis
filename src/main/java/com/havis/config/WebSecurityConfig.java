@@ -22,11 +22,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorizationManagerRequestMatcherRegistry -> {
             authorizationManagerRequestMatcherRegistry
-                    .requestMatchers("/", "test").permitAll()
-                    .requestMatchers("/member/register").anonymous()
-                    .requestMatchers("/post/**").authenticated()
-                    .requestMatchers("/admin/**").hasRole("ADMIN")
-                    .anyRequest().authenticated();
+                    .requestMatchers("/", "/index").permitAll()
+                    .requestMatchers("/member/register").anonymous();
         }));
 
         //formLogin 설정

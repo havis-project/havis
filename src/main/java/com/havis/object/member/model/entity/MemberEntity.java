@@ -10,10 +10,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tbl_member")
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Builder
 @ToString
 public class MemberEntity extends BaseTimeEntity {
 
@@ -64,4 +62,17 @@ public class MemberEntity extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private RoleType role;
+
+    @Builder
+    public MemberEntity(String memberId, String password, String nickname, String name, String gender, LocalDate birthday, String phone, String email, String location) {
+        this.memberId = memberId;
+        this.password = password;
+        this.nickname = nickname;
+        this.name = name;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.phone = phone;
+        this.email = email;
+        this.location = location;
+    }
 }
