@@ -1,8 +1,8 @@
-package com.havis.model.chu.entity;
+package com.havis.object.chu.model.entity;
 
-import com.havis.model.comment.entity.CommentEntity;
-import com.havis.model.member.entity.MemberEntity;
-import com.havis.model.post.entity.PostEntity;
+import com.havis.object.comment.model.entity.CommentEntity;
+import com.havis.object.member.model.entity.MemberEntity;
+import com.havis.object.post.model.entity.PostEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

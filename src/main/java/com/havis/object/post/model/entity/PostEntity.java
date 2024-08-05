@@ -1,7 +1,7 @@
-package com.havis.model.post.entity;
+package com.havis.object.post.model.entity;
 
-import com.havis.model.category.entity.CategoryEntity;
-import com.havis.model.member.entity.MemberEntity;
+import com.havis.object.category.model.entity.CategoryEntity;
+import com.havis.object.member.model.entity.MemberEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

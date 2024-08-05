@@ -1,11 +1,9 @@
-package com.havis.model.member.entity;
+package com.havis.object.member.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,9 +13,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
+@Builder
 @ToString
-public class MemberEntity {
+public class MemberEntity extends BaseTimeEntity {
 
     @Id
     @Column(name = "member_id", unique = true, nullable = false)
@@ -33,8 +31,8 @@ public class MemberEntity {
     @ColumnDefault(value = "1")
     private int level;
 
-    @Column(name = "member_name", nullable = false)
-    private String memberName;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Column(name = "gender", nullable = false)
     private String gender;
@@ -52,6 +50,7 @@ public class MemberEntity {
     private String location;
 
     @Column(name = "ent_date", nullable = false)
+    @CreatedDate
     private LocalDateTime entDate;
 
     @Column(name = "exit_date")
@@ -62,4 +61,7 @@ public class MemberEntity {
 
     @Column(name = "ban_end_date")
     private LocalDateTime banEndDate;
+
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
 }

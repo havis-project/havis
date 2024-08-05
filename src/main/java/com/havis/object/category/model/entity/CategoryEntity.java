@@ -1,4 +1,4 @@
-package com.havis.model.category.entity;
+package com.havis.object.category.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
