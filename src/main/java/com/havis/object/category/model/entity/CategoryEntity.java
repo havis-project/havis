@@ -16,7 +16,7 @@ public class CategoryEntity {
 
     @Id
     @Column(name = "category_name")
-    private String category_name;
+    private String categoryName;
 
     @Column(name = "category_date")
     private LocalDateTime categoryDate;

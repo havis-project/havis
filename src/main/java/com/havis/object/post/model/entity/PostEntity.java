@@ -43,4 +43,52 @@ public class PostEntity {
     @ManyToOne
     @JoinColumn(name = "category_name")
     private CategoryEntity category;
+    private LocalDateTime modifiedAt;
+    private LocalDateTime createdAt;
+
+    public PostEntity(PostRequestDTO postRequestDTO) {
+
+        this.postNo = postRequestDTO.getPostNo();
+        this.postTitle = postRequestDTO.getPostTitle();
+        this.postText = postRequestDTO.getPostText();
+        this.postDate = postRequestDTO.getPostDate();
+        this.postBannedDate = postRequestDTO.getPostBannedDate();
+        this.postBanEndDate = postRequestDTO.getPostBanEndDate();
+        this.member = postRequestDTO.getMember();
+        this.category = postRequestDTO.getCategory();
+
+
+
+    }
+
+    public void update(PostRequestDTO postRequestDTO) {
+        this.postNo = postRequestDTO.getPostNo();
+        this.postTitle = postRequestDTO.getPostTitle();
+        this.postText = postRequestDTO.getPostText();
+        this.postDate = postRequestDTO.getPostDate();
+        this.postBannedDate = postRequestDTO.getPostBannedDate();
+        this.postBanEndDate = postRequestDTO.getPostBanEndDate();
+        this.member = postRequestDTO.getMember();
+        this.category = postRequestDTO.getCategory();
+
+
+    }
+
+
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getModifiedAt() {
+        return modifiedAt;
+    }
+
+    public void setModifiedAt(LocalDateTime modifiedAt) {
+        this.modifiedAt = modifiedAt;
+    }
 }
