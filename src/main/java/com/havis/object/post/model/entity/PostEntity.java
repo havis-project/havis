@@ -41,6 +41,6 @@ public class PostEntity {
     private MemberEntity member;
 
     @ManyToOne
-    @JoinColumn(name = "category_name")
+    @JoinColumn(name = "category_id")
     private CategoryEntity category;
 }
