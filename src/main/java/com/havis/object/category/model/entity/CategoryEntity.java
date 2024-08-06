@@ -15,7 +15,8 @@ import java.time.LocalDateTime;
 public class CategoryEntity {
 
     @Id
-    @Column(name = "category_name")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_name", nullable = false)
     private String categoryName;
 
     @Column(name = "category_date")
