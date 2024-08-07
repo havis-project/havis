@@ -1,5 +1,6 @@
 package com.havis.object.comment.model.entity;
 
+import com.havis.common.basetime.entity.BaseTimeEntity;
 import com.havis.object.member.model.entity.MemberEntity;
 import com.havis.object.post.model.entity.PostEntity;
 import jakarta.persistence.*;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @Builder
-public class CommentEntity {
+public class CommentEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +30,8 @@ public class CommentEntity {
     private String commentText;
 
     @Column(name = "comment_date", nullable = false)
-    @CreatedDate
     @Comment("댓글작성일시")
+    @CreatedDate
     private LocalDateTime commentDate;
 
     @Column(name = "comment_banned_date")

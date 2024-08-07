@@ -14,15 +14,15 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    public void category(CategoryDTO categoryDTO) {
+    public void createCategory(CategoryDTO categoryDTO) {
 
         CategoryEntity category = CategoryEntity.builder()
                 .categoryName(categoryDTO.getCategoryName())
                 .build();
 
-        log.info("[카테고리생성] 카테고리번호 : {} 카테고리명 : {}", category.getCategoryNo(), category.getCategoryName());
+        log.info("[카테고리생성] 카테고리명 : {}", category.getCategoryName());
 
-        CategoryEntity newCategory = categoryRepository.save(category);
+        categoryRepository.saveAndFlush(category);
     }
 
 //    public Optional<CategoryEntity> updateCategory(Long id, String newName) {
