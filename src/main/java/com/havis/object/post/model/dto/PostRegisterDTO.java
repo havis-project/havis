@@ -23,9 +23,9 @@ public class PostRegisterDTO {
     private MemberEntity member;
     private CategoryEntity category;
 
-    public PostEntity toEntity() {
-        return new PostEntity(postTitle, postText);
-    }
+//    public PostEntity toEntity() {
+//        return new PostEntity(postTitle, postText);
+//    }
 
 
 

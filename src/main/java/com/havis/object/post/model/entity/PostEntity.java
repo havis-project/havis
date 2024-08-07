@@ -3,8 +3,6 @@ package com.havis.object.post.model.entity;
 import com.havis.common.basetime.entity.BaseTimeEntity;
 import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.member.model.entity.MemberEntity;
-import com.havis.object.post.model.dto.PostRegisterDTO;
-import com.havis.object.post.model.dto.PostRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
@@ -60,55 +58,7 @@ public class PostEntity extends BaseTimeEntity {
     private LocalDateTime modifiedAt;
     private LocalDateTime createdAt;
 
-    public PostEntity(PostRegisterDTO postRequestDTO) {
-
-        this.postNo = postRequestDTO.getPostNo();
-        this.postTitle = postRequestDTO.getPostTitle();
-        this.postText = postRequestDTO.getPostText();
-        this.postDate = postRequestDTO.getPostDate();
-        this.postBannedDate = postRequestDTO.getPostBannedDate();
-        this.postBanEndDate = postRequestDTO.getPostBanEndDate();
-        this.member = postRequestDTO.getMember();
-        this.category = postRequestDTO.getCategory();
 
 
 
-    }
-
-    public PostEntity(String postTitle, String postText) {
-    }
-
-    public void updatePost(PostRequestDTO postRequestDTO) {
-        this.postNo = postRequestDTO.getPostNo();
-        this.postTitle = postRequestDTO.getPostTitle();
-        this.postText = postRequestDTO.getPostText();
-        this.postDate = postRequestDTO.getPostDate();
-        this.postBannedDate = postRequestDTO.getPostBannedDate();
-        this.postBanEndDate = postRequestDTO.getPostBanEndDate();
-        this.member = postRequestDTO.getMember();
-        this.category = postRequestDTO.getCategory();
-
-
-    }
-
-
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getModifiedAt() {
-        return modifiedAt;
-    }
-
-    public void setModifiedAt(LocalDateTime modifiedAt) {
-        this.modifiedAt = modifiedAt;
-    }
-
-    public void update(String postTitle, String postText) {
-    }
 }
