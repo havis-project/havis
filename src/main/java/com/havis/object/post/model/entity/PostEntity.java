@@ -2,6 +2,8 @@ package com.havis.object.post.model.entity;
 
 import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.member.model.entity.MemberEntity;
+import com.havis.object.post.model.dto.PostRegisterDTO;
+import com.havis.object.post.model.dto.PostRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -46,7 +48,7 @@ public class PostEntity {
     private LocalDateTime modifiedAt;
     private LocalDateTime createdAt;
 
-    public PostEntity(PostRequestDTO postRequestDTO) {
+    public PostEntity(PostRegisterDTO postRequestDTO) {
 
         this.postNo = postRequestDTO.getPostNo();
         this.postTitle = postRequestDTO.getPostTitle();
@@ -59,6 +61,9 @@ public class PostEntity {
 
 
 
+    }
+
+    public PostEntity(String postTitle, String postText) {
     }
 
     public void update(PostRequestDTO postRequestDTO) {
@@ -90,5 +95,8 @@ public class PostEntity {
 
     public void setModifiedAt(LocalDateTime modifiedAt) {
         this.modifiedAt = modifiedAt;
+    }
+
+    public void update(String postTitle, String postText) {
     }
 }

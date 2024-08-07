@@ -1,6 +1,11 @@
-package com.havis.object.post.model.entity;
+package com.havis.object.post.service;
 
 import com.havis.object.member.model.entity.MemberEntity;
+import com.havis.object.post.model.dto.PostRegisterDTO;
+import com.havis.object.post.model.dto.PostRequestDTO;
+import com.havis.object.post.model.dto.PostResponseDTO;
+import com.havis.object.post.model.entity.PostEntity;
+import com.havis.object.post.repository.PostRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +22,8 @@ public class PostService {
 
 
     // 글 생성
-    public PostResponseDTO createPost(PostRegisterDTO postRequestDTO) {
-        PostEntity postEntity = new PostEntity(postRequestDTO);
+    public PostResponseDTO createPost(PostRegisterDTO postRegisterDTO) {
+        PostEntity postEntity = new PostEntity(postRegisterDTO);
         postRepository.save(postEntity);
         return new PostResponseDTO(postEntity);
     }
@@ -57,7 +62,7 @@ public class PostService {
 
     // 삭제
     @Transactional
-    public Long delete(Long member) {
+    public Long deletePost(Long member) {
         postRepository.deleteById(member);
         return member;
     }
@@ -67,4 +72,13 @@ public class PostService {
 
         return postRepository.findAll();
     }
+
+    @Transactional
+    public PostEntity updatePost(Long member, PostRegisterDTO updatedPost) {
+        PostEntity post = postRepository.findById(member).orElseThrow(() -> new IllegalArgumentException("잘못된 Post ID 입니다."));
+        post.update(updatedPost.getPostTitle(), post.getPostText());
+
+        return postRepository.save(post);
+    }
+
 }

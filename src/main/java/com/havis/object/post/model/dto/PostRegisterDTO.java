@@ -1,7 +1,8 @@
-package com.havis.object.post.model.entity;
+package com.havis.object.post.model.dto;
 
 import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.member.model.entity.MemberEntity;
+import com.havis.object.post.model.entity.PostEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
