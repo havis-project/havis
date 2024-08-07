@@ -1,7 +1,9 @@
 package com.havis.object.category.controller;
 
+import com.havis.object.category.model.dto.CategoryDTO;
 import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.category.service.CategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/categories")
+@Slf4j
 public class CategoryController {
     private final CategoryService categoryService;
 
@@ -31,21 +34,26 @@ public class CategoryController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public CategoryEntity createCategory(@RequestBody CategoryEntity category) {
-        return categoryService.createCategory(category.getCategoryName());
+    @GetMapping("category")
+    public String category() {return "categories/category";}
+
+    @PostMapping("/category")
+    public String category(CategoryDTO categoryDTO){
+        categoryService.category(categoryDTO);
+
+        return "redirect:/";
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<CategoryEntity> updateCategory(@PathVariable Long id, @RequestBody CategoryEntity updatedCategory) {
-        Optional<CategoryEntity> updated = categoryService.updateCategory(id, updatedCategory.getCategoryName());
-        return updated.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
-        boolean deleted = categoryService.deleteCategory(id);
-        return deleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<CategoryEntity> updateCategory(@PathVariable Long id, @RequestBody CategoryEntity updatedCategory) {
+//        Optional<CategoryEntity> updated = categoryService.updateCategory(id, updatedCategory.getCategoryName());
+//        return updated.map(ResponseEntity::ok)
+//                .orElseGet(() -> ResponseEntity.notFound().build());
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
+//        boolean deleted = categoryService.deleteCategory(id);
+//        return deleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+//    }
 }

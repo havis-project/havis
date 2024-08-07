@@ -12,7 +12,5 @@ import java.time.LocalDateTime;
 public class CategoryDTO {
 
     private String category_name;
-    private LocalDateTime categoryDate;
-    private LocalDateTime categoryHideDate;
 
 }

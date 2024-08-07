@@ -9,10 +9,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tbl_category")
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @ToString
 public class CategoryEntity extends BaseTimeEntity {
 
@@ -30,4 +28,10 @@ public class CategoryEntity extends BaseTimeEntity {
 
     @Column(name = "category_hide_date")
     private LocalDateTime categoryHideDate;
+
+    @Builder
+    public CategoryEntity(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
 }
