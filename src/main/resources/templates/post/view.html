@@ -15,7 +15,11 @@
             <td class="member">작성자</td>
             <!--        <td class="postDate">작성날짜</td>-->
         </tr>
-        {{#posts}}
+        <script>
+            const $list = document.get
+
+        </script>
+
         <tr>
             <td>{{postNO}}</td>
             <td>{{postTitle}}</td>
@@ -23,30 +27,11 @@
             <td>{{member}}</td>
         </tr>
         {{/posts}}
+        <tr th:each = "post : ${list}">
+
+        </tr>
     </table>
 
-    <table class="table">
-        <thead class="thead-strong">
-        <tr>
-            <th>게시글번호</th>
-            <th>제목</th>
-            <th>내용</th>
-            <th>작성자</th>
-        </tr>
-        </thead>
-        <tbody id="tbody">
-
-        <!--posts라는 List 순회 (자바의 for문)-->
-        {{#posts}}
-        <tr>
-            <td>{{postNO}}</td>
-            <td>{{postTitle}}</td>
-            <td>{{postText}}</td>
-            <td>{{member}}</td>
-        </tr>
-        {{/posts}}
-        </tbody>
-    </table>
 </form>
 </body>
 </html>

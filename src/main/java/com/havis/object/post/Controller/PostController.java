@@ -37,7 +37,7 @@ public class PostController {
 
     @GetMapping("/view")
     public String postView() {
-        return "post/create";
+        return "post/view";
 
     }
 
