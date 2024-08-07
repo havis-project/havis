@@ -29,7 +29,6 @@ public class CategoryController {
 
         return "redirect:/";
     }
-
 //    @PutMapping("/{id}")
 //    public ResponseEntity<CategoryEntity> updateCategory(@PathVariable Long id, @RequestBody CategoryEntity updatedCategory) {
 //        Optional<CategoryEntity> updated = categoryService.updateCategory(id, updatedCategory.getCategoryName());

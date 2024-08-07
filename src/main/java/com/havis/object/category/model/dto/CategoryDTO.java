@@ -13,5 +13,4 @@ import java.time.LocalDateTime;
 public class CategoryDTO {
 
     private String categoryName;
-
 }
