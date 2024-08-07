@@ -5,8 +5,9 @@ import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.category.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -26,21 +27,11 @@ public class CategoryService {
         categoryRepository.saveAndFlush(category);
     }
 
+    public List<CategoryEntity> findAllCategory() {
 
+        List<CategoryEntity> categoryList = categoryRepository.findAll();
 
+        return categoryRepository.findAll();
 
-//    public Optional<CategoryEntity> updateCategory(Long id, String newName) {
-//        return categoryRepository.findById(id).map(category -> {
-//            category.setCategoryName(newName);
-//            return categoryRepository.save(category);
-//        });
-//    }
-//
-//    public boolean deleteCategory(Long id) {
-//        if (categoryRepository.existsById(id)) {
-//            categoryRepository.deleteById(id);
-//            return true;
-//        }
-//        return false;
-//    }
+    }
 }
