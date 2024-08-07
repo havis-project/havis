@@ -22,8 +22,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorizationManagerRequestMatcherRegistry -> {
             authorizationManagerRequestMatcherRegistry
-                    .requestMatchers("/", "/index").permitAll()
-                    .requestMatchers("/member/register").anonymous();
+                    .anyRequest().permitAll();
         }));
 
         //formLogin 설정
@@ -33,7 +32,7 @@ public class WebSecurityConfig {
                     .loginProcessingUrl("/auth/login") // 로그인 처리(POST)
                     .usernameParameter("memberId") // userName으로 전달한 파라미터 설정
                     .passwordParameter("password") // password로 전달할 파라미터 설정
-                    .defaultSuccessUrl("/") // 로그인 성공시 이동할 url
+                    .defaultSuccessUrl("/main/home") // 로그인 성공시 이동할 url
                     .permitAll();
         }));
 
