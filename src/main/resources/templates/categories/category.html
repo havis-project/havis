@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Category</title>
+
 </head>
 <body>
     <form th:action="@{/categories/category}" th:method="post">
         <label>카테고리이름 : </label>
         <input type="text" name="categoryName" id="categoryName">
+        <button type="submit">카테코리등록</button>
     </form>
 </body>
 </html>
