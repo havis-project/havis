@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+
+</head>
+<body>
+    <form th:action="@{/categories/create}" th:method="post">
+    <div>
+        <label>카테고리이름 : </label>
+        <input type="text" name="categoryName" id="categoryName">
+    </div>
+        <button type="submit">카테코리등록</button>
+    </form>
+</body>
+</html>
