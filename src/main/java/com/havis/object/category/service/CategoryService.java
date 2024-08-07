@@ -5,6 +5,7 @@ import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.category.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,6 +25,9 @@ public class CategoryService {
 
         CategoryEntity newCategory = categoryRepository.save(category);
     }
+
+
+
 
 //    public Optional<CategoryEntity> updateCategory(Long id, String newName) {
 //        return categoryRepository.findById(id).map(category -> {
