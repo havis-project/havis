@@ -1,4 +1,4 @@
-package com.havis.common.main;
+package com.havis.common.main.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/main")
 public class MainController {
 
-    @GetMapping("/main")
-    public void main() {
+    @GetMapping("/home")
+    public void home() {
     }
 }
