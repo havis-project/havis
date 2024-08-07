@@ -66,7 +66,7 @@ public class PostEntity {
     public PostEntity(String postTitle, String postText) {
     }
 
-    public void update(PostRequestDTO postRequestDTO) {
+    public void updatePost(PostRequestDTO postRequestDTO) {
         this.postNo = postRequestDTO.getPostNo();
         this.postTitle = postRequestDTO.getPostTitle();
         this.postText = postRequestDTO.getPostText();

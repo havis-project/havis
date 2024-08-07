@@ -1,5 +1,7 @@
 package com.havis.object.post.model.dto;
 
+import com.havis.object.category.model.entity.CategoryEntity;
+import com.havis.object.member.model.entity.MemberEntity;
 import com.havis.object.post.model.entity.PostEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,18 +25,26 @@ public class PostListResponseDTO {
 
     private LocalDateTime modifiedAt;
 
-    // Entity -> dto
-    public PostListResponseDTO(PostEntity postEntity) {
-        this.postTitle = postEntity.getPostTitle();
-        this.createdAt = postEntity.getModifiedAt();
-        this.modifiedAt = postEntity.getCreatedAt();
-    }
+    private int postNo;
+    private String postText;
+    private LocalDateTime postDate;
+    private LocalDateTime postBannedDate;
+    private LocalDateTime postBanEndDate;
+    private MemberEntity member;
+    private CategoryEntity category;
 
-    public PostListResponseDTO(Optional<PostEntity> postEntity) {
-        this.postTitle = postEntity.get().getPostTitle();
-        this.createdAt = postEntity.get().getModifiedAt();
-        this.modifiedAt = postEntity.get().getCreatedAt();
-    }
+//    // Entity -> dto
+//    public PostListResponseDTO(PostEntity postEntity) {
+//        this.postTitle = postEntity.getPostTitle();
+//        this.createdAt = postEntity.getModifiedAt();
+//        this.modifiedAt = postEntity.getCreatedAt();
+//    }
+//
+//    public PostListResponseDTO(Optional<PostEntity> postEntity) {
+//        this.postTitle = postEntity.get().getPostTitle();
+//        this.createdAt = postEntity.get().getModifiedAt();
+//        this.modifiedAt = postEntity.get().getCreatedAt();
+//    }
 
 
 }

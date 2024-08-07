@@ -50,15 +50,7 @@ public class PostService {
         return null;
     }
 
-    // 글 수정
-    @Transactional
-    public MemberEntity update(Long member, PostRequestDTO postRequestDTO) {
-        PostEntity postEntity = postRepository.findById(member).orElseThrow(
-                () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다.")
-        );
-        postEntity.update(postRequestDTO);
-        return postEntity.getMember();
-    }
+
 
     // 삭제
     @Transactional
@@ -67,15 +59,9 @@ public class PostService {
         return member;
     }
 
-
-    public List<PostEntity> getAllPost() {
-
-        return postRepository.findAll();
-    }
-
     @Transactional
     public PostEntity updatePost(Long member, PostRegisterDTO updatedPost) {
-        PostEntity post = postRepository.findById(member).orElseThrow(() -> new IllegalArgumentException("잘못된 Post ID 입니다."));
+        PostEntity post = postRepository.findById(member).orElseThrow(() -> new IllegalArgumentException("잘못된 Post 입니다."));
         post.update(updatedPost.getPostTitle(), post.getPostText());
 
         return postRepository.save(post);
