@@ -2,6 +2,7 @@ package com.havis.object.member.service;
 
 import com.havis.object.member.model.dto.SignupDTO;
 import com.havis.object.member.model.entity.MemberEntity;
+import com.havis.object.member.model.entity.RoleType;
 import com.havis.object.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,10 +29,12 @@ public class MemberService {
                 .phone(signupDTO.getPhone())
                 .email(signupDTO.getEmail())
                 .location(signupDTO.getLocation())
+                .level(1)
+                .role(RoleType.valueOf("USER"))
                 .build();
 
-        log.info("[회원가입] id : {}", member.getMemberId());
+        log.info("[회원가입] 회원번호 : {}, id : {}", member.getMemberNo(), member.getMemberId());
 
-        MemberEntity newMember = memberRepository.save(member);
+        memberRepository.saveAndFlush(member);
     }
 }

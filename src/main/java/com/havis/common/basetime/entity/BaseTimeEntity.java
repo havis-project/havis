@@ -1,4 +1,4 @@
-package com.havis.object.basetime.entity;
+package com.havis.common.basetime.entity;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
