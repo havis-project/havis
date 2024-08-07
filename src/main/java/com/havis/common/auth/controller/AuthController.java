@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/auth")
-@Slf4j
 public class AuthController {
 
     @GetMapping("/login")
