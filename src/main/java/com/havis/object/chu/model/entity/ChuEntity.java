@@ -27,8 +27,8 @@ public class ChuEntity extends BaseTimeEntity {
     private int chuNo;
 
     @Column(name = "chu_date")
-    @CreatedDate
     @Comment("츄천일시")
+    @CreatedDate
     private LocalDateTime chuDate;
 
     @ManyToOne

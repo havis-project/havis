@@ -20,11 +20,11 @@ public class MemberEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_no", unique = true, nullable = false)
+    @Column(name = "member_no", unique = true, nullable = false, updatable = false)
     @Comment("회원번호")
     private int memberNo;
 
-    @Column(name = "member_id", unique = true, nullable = false)
+    @Column(name = "member_id", unique = true, nullable = false, updatable = false)
     @Comment("아이디")
     private String memberId;
 
@@ -48,7 +48,7 @@ public class MemberEntity extends BaseTimeEntity {
     @Comment("성별")
     private String gender;
 
-    @Column(name = "birthday", nullable = false)
+    @Column(name = "birthday", nullable = false, updatable = false)
     @Comment("생년월일")
     private LocalDate birthday;
 
@@ -64,7 +64,7 @@ public class MemberEntity extends BaseTimeEntity {
     @Comment("활동지")
     private String location;
 
-    @Column(name = "ent_date", nullable = false)
+    @Column(name = "ent_date", nullable = false, updatable = false)
     @Comment("가입일시")
     @CreatedDate
     private LocalDateTime entDate;

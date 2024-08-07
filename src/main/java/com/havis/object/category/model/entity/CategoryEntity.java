@@ -19,17 +19,17 @@ public class CategoryEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_no")
+    @Column(name = "category_no", unique = true, nullable = false, updatable = false)
     @Comment("카테고리번호")
     private int categoryNo;
 
-    @Column(name = "category_name", nullable = false)
+    @Column(name = "category_name", unique = true, nullable = false)
     @Comment("카테고리명")
     private String categoryName;
 
-    @Column(name = "category_date")
-    @CreatedDate
+    @Column(name = "category_date", updatable = false)
     @Comment("카테고리생성일시")
+    @CreatedDate
     private LocalDateTime categoryDate;
 
     @Column(name = "category_hide_date")

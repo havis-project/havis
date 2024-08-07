@@ -35,6 +35,6 @@ public class MemberService {
 
         log.info("[회원가입] 회원번호 : {}, id : {}", member.getMemberNo(), member.getMemberId());
 
-        MemberEntity newMember = memberRepository.save(member);
+        memberRepository.saveAndFlush(member);
     }
 }

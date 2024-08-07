@@ -6,11 +6,12 @@ import com.havis.object.member.model.entity.MemberEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tbl_category")
+@Table(name = "tbl_post")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
@@ -34,6 +35,7 @@ public class PostEntity extends BaseTimeEntity {
 
     @Column(name = "post_date", nullable = false)
     @Comment("게시글작성일시")
+    @CreatedDate
     private LocalDateTime postDate;
 
     @Column(name = "post_banned_date")
@@ -50,7 +52,7 @@ public class PostEntity extends BaseTimeEntity {
     private MemberEntity member;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
-    @Comment("카테고리")
+    @JoinColumn(name = "category_no")
+    @Comment("게시글카테고리")
     private CategoryEntity category;
 }

@@ -23,12 +23,13 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping("/create")
-    public void category() {
+    public String category() {
+        return "categories/create";
     }
 
     @PostMapping("/create")
     public String category(CategoryDTO categoryDTO) {
-        categoryService.category(categoryDTO);
+        categoryService.createCategory(categoryDTO);
         return "redirect:/";
     }
 
@@ -44,5 +45,4 @@ public class CategoryController {
 //        boolean deleted = categoryService.deleteCategory(id);
 //        return deleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
 //    }
-
 }
