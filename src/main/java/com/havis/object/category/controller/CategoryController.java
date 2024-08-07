@@ -1,44 +1,30 @@
 package com.havis.object.category.controller;
 
 import com.havis.object.category.model.dto.CategoryDTO;
-import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.category.service.CategoryService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
-@RestController
+@Controller
 @RequestMapping("/categories")
+@RequiredArgsConstructor
 @Slf4j
 public class CategoryController {
+
     private final CategoryService categoryService;
 
-    @Autowired
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
+    @GetMapping("/create")
+    public String category() {
+        return "categories/create";
     }
 
-    @GetMapping
-    public List<CategoryEntity> getAllCategories() {
-        return categoryService.getAllCategories();
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<CategoryEntity> getCategoryById(@PathVariable Long id) {
-        Optional<CategoryEntity> category = categoryService.getCategoryById(id);
-        return category.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("category")
-    public String category() {return "categories/category";}
-
-    @PostMapping("/category")
+    @PostMapping("/create")
     public String category(CategoryDTO categoryDTO){
+
+        log.info("categoryDTO : {}", categoryDTO);
+
         categoryService.category(categoryDTO);
 
         return "redirect:/";

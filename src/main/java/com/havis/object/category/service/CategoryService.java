@@ -8,30 +8,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class CategoryService {
+
     private final CategoryRepository categoryRepository;
-
-    public CategoryService(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
-    }
-
-    public List<CategoryEntity> getAllCategories() {
-        return categoryRepository.findAll();
-    }
-
-    public Optional<CategoryEntity> getCategoryById(Long id) {
-        return categoryRepository.findById(id);
-    }
 
     public void category(CategoryDTO categoryDTO) {
 
         CategoryEntity category = CategoryEntity.builder()
-                .categoryName(categoryDTO.getCategory_name())
+                .categoryName(categoryDTO.getCategoryName())
                 .build();
 
         CategoryEntity newCategory = categoryRepository.save(category);
