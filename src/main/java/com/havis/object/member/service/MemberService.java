@@ -30,6 +30,8 @@ public class MemberService {
                 .location(signupDTO.getLocation())
                 .build();
 
+        log.info("[회원가입] id : {}", member.getMemberId());
+
         MemberEntity newMember = memberRepository.save(member);
     }
 }
