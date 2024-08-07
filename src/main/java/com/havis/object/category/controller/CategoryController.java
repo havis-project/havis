@@ -5,7 +5,9 @@ import com.havis.object.category.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/categories")
@@ -16,19 +18,15 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping("/create")
-    public String category() {
-        return "categories/create";
+    public void category() {
     }
 
     @PostMapping("/create")
-    public String category(CategoryDTO categoryDTO){
-
-        log.info("categoryDTO : {}", categoryDTO);
-
+    public String category(CategoryDTO categoryDTO) {
         categoryService.category(categoryDTO);
-
         return "redirect:/";
     }
+
 //    @PutMapping("/{id}")
 //    public ResponseEntity<CategoryEntity> updateCategory(@PathVariable Long id, @RequestBody CategoryEntity updatedCategory) {
 //        Optional<CategoryEntity> updated = categoryService.updateCategory(id, updatedCategory.getCategoryName());
@@ -41,4 +39,5 @@ public class CategoryController {
 //        boolean deleted = categoryService.deleteCategory(id);
 //        return deleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
 //    }
+
 }

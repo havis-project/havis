@@ -5,12 +5,7 @@ import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.category.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +19,8 @@ public class CategoryService {
         CategoryEntity category = CategoryEntity.builder()
                 .categoryName(categoryDTO.getCategoryName())
                 .build();
+
+        log.info("[카테고리생성] 카테고리번호 : {} 카테고리명 : {}", category.getCategoryNo(), category.getCategoryName());
 
         CategoryEntity newCategory = categoryRepository.save(category);
     }

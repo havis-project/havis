@@ -1,6 +1,6 @@
 package com.havis.object.member.model.entity;
 
-import com.havis.object.basetime.entity.BaseTimeEntity;
+import com.havis.common.basetime.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
@@ -78,7 +78,7 @@ public class MemberEntity extends BaseTimeEntity {
     private LocalDateTime bannedDate;
 
     @Column(name = "ban_end_date")
-    @Comment("정지종료일시")
+    @Comment("정지해제일시")
     private LocalDateTime banEndDate;
 
     @Enumerated(EnumType.STRING)
