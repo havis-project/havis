@@ -27,11 +27,5 @@ public class CategoryService {
         categoryRepository.saveAndFlush(category);
     }
 
-    public List<CategoryEntity> findAllCategory() {
 
-        List<CategoryEntity> categoryList = categoryRepository.findAll();
-
-        return categoryRepository.findAll();
-
-    }
 }
