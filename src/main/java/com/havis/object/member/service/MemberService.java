@@ -26,7 +26,7 @@ public class MemberService {
                 .email(signupDTO.getEmail())
                 .name(signupDTO.getName())
                 .phone("010" + signupDTO.getFrontPhone() + signupDTO.getBackPhone())
-                .location(locationCheck(signupDTO.getSido(), signupDTO.getSigugun()))
+                .location(locationCheck(signupDTO))
                 .level(1).role(RoleType.valueOf("USER")).build();
 
         log.info("[회원가입] 회원번호 : {}, id : {}", member.getMemberNo(), member.getMemberId());
@@ -34,11 +34,14 @@ public class MemberService {
         memberRepository.saveAndFlush(member);
     }
 
-    private String locationCheck(String sido, String sigugun) {
+    private String locationCheck(SignupDTO signupDTO) {
+
+        String sido = signupDTO.getSido();
+        String sigugun = signupDTO.getSigugun();
 
         if (sido.equals("시/도 선택")) {
-            return null;
-        } else if (!sido.equals("시/도 선택") && sigugun.equals("시/구/군 선택")) {
+          return null;
+        } else if (sigugun.equals("시/구/군 선택")) {
             return sido;
         } else {
             return sido + " " + sigugun;
