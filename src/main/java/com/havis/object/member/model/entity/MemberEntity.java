@@ -44,14 +44,6 @@ public class MemberEntity extends BaseTimeEntity {
     @Comment("회원명")
     private String name;
 
-    @Column(name = "gender", nullable = false)
-    @Comment("성별")
-    private String gender;
-
-    @Column(name = "birthday", nullable = false, updatable = false)
-    @Comment("생년월일")
-    private LocalDate birthday;
-
     @Column(name = "phone", unique = true, nullable = false)
     @Comment("휴대폰번호")
     private String phone;

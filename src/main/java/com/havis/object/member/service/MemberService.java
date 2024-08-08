@@ -19,19 +19,7 @@ public class MemberService {
 
     public void register(SignupDTO signupDTO) {
 
-        MemberEntity member = MemberEntity.builder()
-                .memberId(signupDTO.getMemberId())
-                .password(passwordEncoder.encode(signupDTO.getPassword()))
-                .nickname(signupDTO.getNickname())
-                .name(signupDTO.getName())
-                .gender(signupDTO.getGender())
-                .birthday(signupDTO.getBirthday())
-                .phone(signupDTO.getPhone())
-                .email(signupDTO.getEmailId() + '@' + signupDTO.getEmailSelect())
-                .location(signupDTO.getSido() + " " + signupDTO.getGugun())
-                .level(1)
-                .role(RoleType.valueOf("USER"))
-                .build();
+        MemberEntity member = MemberEntity.builder().level(1).role(RoleType.valueOf("USER")).build();
 
         log.info("[회원가입] 회원번호 : {}, id : {}", member.getMemberNo(), member.getMemberId());
 
