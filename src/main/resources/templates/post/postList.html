@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>게시판 전체 조회</title>
+    <title>postList</title>
     <style>
         table {
             margin: auto;
@@ -60,11 +60,18 @@
     <table class="table">
         <tr><td colspan="2"><h2>게시판 목록</h2></td></tr>
         <tr class="header">
-            <td class="postNo">번호</td>
-            <td class="postTitle">제목</td>
-            <td class="postText">내용</td>
-            <td class="member">작성자</td>
+            <th>번호</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성자</th>
             <!--        <td class="postDate">작성날짜</td>-->
+        </tr>
+        <tr th:each="post : ${postList}">
+            <td th:text="${ post.postNo }"></td>
+            <td th:text="${ post.postTitle }"></td>
+            <td th:text="${ post.postText }"></td>
+            <td th:text="${ post.member }"></td>
+
         </tr>
 
 

@@ -13,6 +13,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/post")
@@ -35,14 +38,6 @@ public class PostController {
         return "redirect:/";
     }
 
-//    @PostMapping("/view")
-//    public String findAllPost(Model model) {
-//
-//
-//        model.addAttribute("list", postService.findAllPost());
-//        return "list";
-//    }
-
     @GetMapping("/postList")
     public String findAllPost(@PageableDefault Pageable pageable, Model model) {
 
@@ -55,7 +50,7 @@ public class PostController {
         model.addAttribute("paging", paging);
         model.addAttribute("postList", postList);
 
-        return "postList";
+        return "post/postList";
     }
 
 
