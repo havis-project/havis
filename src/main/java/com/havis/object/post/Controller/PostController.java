@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,19 +27,20 @@ public class PostController {
 
     private final PostService postService;
 
-    @GetMapping("/create")
+    @GetMapping("/postCreate")
     public String post() {
-        return "post/create";
+        return "post/postCreate";
 
     }
 
 
-    @PostMapping("/create")
+    @PostMapping("/postCreate")
     public String post(PostRegisterDTO postRegisterDTO) {
         postService.createPost(postRegisterDTO);
         return "redirect:/";
     }
 
+    // 전체 조회
     @GetMapping("/postList")
     public String findAllPost(@PageableDefault Pageable pageable, Model model) {
 
@@ -53,11 +56,18 @@ public class PostController {
         return "post/postList";
     }
 
+    // 수정
+    @PutMapping("/postModify")
+    public ResponseEntity<Boolean> updatePost(@RequestBody PostRegisterDTO postRegisterDTO){
+        try{
+            postService.updatePost(postRegisterDTO);
+        }catch (Exception e){
+            return ResponseEntity.ok(false);
+        }
 
-//    @PutMapping("/{member_id}")
-//    public PostEntity updatePost(@PathVariable Long member, @RequestBody PostRegisterDTO updatedPost) {
-//        return postService.updatePost(member, updatedPost);
-//    }
+        return ResponseEntity.ok(true);
+    }
+
 
     @DeleteMapping("/{member_id}")
     public void deletePost(@PathVariable Long member) {

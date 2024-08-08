@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>postList</title>
+    <title>게시판 목록</title>
     <style>
         table {
             margin: auto;
@@ -58,7 +58,7 @@
 <body>
 <form th:action="@{/post/postList}" th:method="post">
     <table class="table">
-        <tr><td colspan="2"><h2>게시판 목록</h2></td></tr>
+        <tr><td colspan="4"><h2>게시판 목록</h2></td></tr>
         <tr class="header">
             <th>번호</th>
             <th>제목</th>
@@ -88,7 +88,7 @@
 
 
     <th:block th:each="page: ${ #numbers.sequence(paging.startPage, paging.endPage)}">
-        <button th:onclick="'location.href=\'/post/list?page=' + '@{${page}} + '\''"
+        <button th:onclick="'location.href=\'/post/list?page=' + @{${page}} + '\''"
                 th:text="${page}"
                 th:disabled="${ paging.currentPage eq page }">
         </button>

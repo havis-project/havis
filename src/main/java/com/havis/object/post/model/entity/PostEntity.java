@@ -59,6 +59,12 @@ public class PostEntity extends BaseTimeEntity {
     private LocalDateTime createdAt;
 
 
+    public void updatePostEntity(String postText) {
 
+        this.postText = postText;
+
+
+
+    }
 
 }

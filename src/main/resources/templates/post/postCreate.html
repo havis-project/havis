@@ -15,18 +15,15 @@
             <td class="member">작성자</td>
             <!--        <td class="postDate">작성날짜</td>-->
         </tr>
-        <script>
-            var i, day = 20;
-            for (i = 10; i > 0; i--) {
-                document.write("<tr class='postText'>");
-                document.write("<td>" + i +"</td>");
-                document.write("<td class='postTitle'>제목입니다</td>");
-                document.write("<td class='postText'>내용입니다.</td>");
-                document.write("<td class='member'>작성자</td>");
-                // document.write("<td>24-01-" + day-- + "</td>");
-                // document.write("</tr>");
-            }
-        </script>
+        <div>
+            <label>글 제목 : </label>
+            <input type="text" name="postTitle" id="postTitle">
+            <label>글 내용 : </label>
+            <input type="text" name="postText" id="postText">
+<!--            <label>작성자 : </label>-->
+<!--            <input type="text" name="member" id="member">-->
+        </div>
+        <button type="submit">글 작성</button>
     </table>
     </form>
 </body>

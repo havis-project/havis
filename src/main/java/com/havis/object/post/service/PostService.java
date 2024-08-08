@@ -33,6 +33,7 @@ public class PostService {
         postRepository.saveAndFlush(postEntity);
     }
 
+    // 전체 조회
     public Page<PostRegisterDTO> findAllPost(Pageable pageable) {
 
         pageable = PageRequest.of(
@@ -46,56 +47,30 @@ public class PostService {
 
     }
 
+    public Board findBoardById(int boardId) {
 
+        Board board = boardRepository.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
 
+        return board;
+    }
 
-//    // 모든 글 가져오기
-//    public List<PostEntity> findAllPost() {
-//        try{
-//            List<PostEntity> postEntityList = postRepository.findAll();
-//
-//            List<PostResponseDTO> postResponseDTOList = new ArrayList<>();
-//
-//            for (PostEntity postEntity : postEntityList) {
-//                postResponseDTOList.add(
-//                        new PostResponseDTO(postEntity)
-//                );
-//
-//            }
-//
-//
-//        } catch (Exception e) {
-//
-//        }
-//
-//        return null;
-//    }
+    @Transactional
+    public boolean updatePost(PostRegisterDTO postRegisterDTO){
 
+        PostEntity postEntity = postRepository.findById(Long.valueOf(postRegisterDTO.getPostTitle())).orElseThrow(RuntimeException::new);
+        postEntity.updatePostEntity(postRegisterDTO.getPostText());
+//                ,postRegisterDTO.getLand_number()
+//                ,postRegisterDTO.getRoad_number()
+//                ,postRegisterDTO.getCategory());
 
-    // 업데이트
-//    public boolean updatePost(PostRegisterDTO postRegisterDTO){
-//
-//        PostEntity postEntity = postRepository.findById(postRegisterDTO.getPostTitle().orElseThrow(RuntimeException::new);
-//        postEntity.modifypostEntity(postRegisterDTO.get()
-//                ,healthRequestDTO.getLand_number()
-//                ,healthRequestDTO.getRoad_number()
-//                ,healthRequestDTO.getCategory());
-//
-//        try{
-//            healthRepository.save(healthInfo);
-//        }catch (Exception e){
-//            return false;
-//        }
-//        return true;
-//    };
-
-//    @Transactional
-//    public PostEntity updatePost(Long member, PostRegisterDTO updatedPost) {
-//        PostEntity post = postRepository.findById(member).orElseThrow(() -> new IllegalArgumentException("잘못된 Post 입니다."));
-//        post.modify(updatedPost.getPostTitle(), post.getPostText());
-//
-//        return postRepository.save(post);
-//    }
+        try{
+            postRepository.save(postEntity);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    };
 
 
 

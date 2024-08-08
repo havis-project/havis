@@ -1,6 +1,6 @@
 package com.havis.object.post.repository;
 
-import com.havis.object.post.model.dto.PostListResponseDTO;
+import com.havis.object.post.model.dto.PostRegisterDTO;
 import com.havis.object.post.model.entity.PostEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
