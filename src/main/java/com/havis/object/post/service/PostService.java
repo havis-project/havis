@@ -47,12 +47,12 @@ public class PostService {
 
     }
 
-    public Board findBoardById(int boardId) {
+    public PostEntity findPostById(String postTitle) {
 
-        Board board = boardRepository.findById(boardId)
+        PostEntity postEntity = postRepository.findById(Long.valueOf(postTitle))
                 .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
 
-        return board;
+        return postEntity;
     }
 
     @Transactional

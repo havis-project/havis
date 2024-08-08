@@ -4,6 +4,7 @@ package com.havis.object.post.Controller;
 import com.havis.common.Pagenation;
 import com.havis.common.PagingButtonInfo;
 import com.havis.object.post.model.dto.PostRegisterDTO;
+import com.havis.object.post.model.entity.PostEntity;
 import com.havis.object.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -55,6 +56,18 @@ public class PostController {
 
         return "post/postList";
     }
+
+    // 상세 조회
+    @GetMapping("/{postTitle}")
+    public String PostDetail(@PathVariable String postTitle, Model model) {
+
+        PostEntity postEntity = postService.findPostById(postTitle);
+
+        model.addAttribute("postEntity", postEntity);
+
+        return "post/detail";
+    }
+
 
     // 수정
     @PutMapping("/postModify")
