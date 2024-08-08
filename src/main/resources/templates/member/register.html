@@ -66,11 +66,11 @@
         </div>
 
         <div class="password">
-            <input type="text" id="password" name="password" placeholder="비밀번호">
+            <input type="password" id="password" name="password" placeholder="비밀번호">
         </div>
 
         <div class="pwCheck">
-            <input type="text" id="pwCheck" name="pwCheck" placeholder="비밀번호 확인">
+            <input type="password" id="pwCheck" name="pwCheck" placeholder="비밀번호 확인">
         </div>
 
         <div class="nickname">
@@ -78,7 +78,7 @@
         </div>
 
         <div class="email">
-            <input type="email" id="emailId" name="emailId" placeholder="이메일">
+            <input type="email" id="email" name="email" placeholder="이메일">
         </div>
 
         <div class="name">
@@ -100,8 +100,11 @@
 
         <div class="location">
             <span class="title loction">활동지(선택사항)</span>
-            <select id="sido" name="sido"></select>
-            <select id="sigugun" name="sigugun"></select>
+            <select id="sido" name="sido">
+            </select>
+            <select id="sigugun" name="sigugun">
+                <option value="none"></option>
+            </select>
         </div>
 
         <button type="submit">가입하기</button>
