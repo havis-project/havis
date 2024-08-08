@@ -50,11 +50,13 @@ public class CategoryController {
         return "category/categoryList";
     }
 
-    @GetMapping("/search")
-    public String findByCategoryNo(@RequestParam Integer categoryNo, Model model){
+    @GetMapping("/{categoryNo}")
+    public String findCategoryByNo (@PathVariable("categoryNo") int categoryNo, Model model) {
 
-        List<CategoryDTO> categoryList = categoryService.findCategoryByNo(categoryNo);
+        CategoryDTO category = categoryService.findCategoryByNo(categoryNo);
 
-        model.addAttribute("")
+        model.addAttribute("category", category);
+
+        return "category/detail";
     }
 }
