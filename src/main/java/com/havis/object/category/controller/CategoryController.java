@@ -3,6 +3,7 @@ package com.havis.object.category.controller;
 import com.havis.common.Pagenation;
 import com.havis.common.PagingButtonInfo;
 import com.havis.object.category.model.dto.CategoryDTO;
+import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.category.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +52,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{categoryNo}")
-    public String findCategoryByNo (@PathVariable("categoryNo") int categoryNo, Model model) {
+    public String getCategoryDetail(@PathVariable int categoryNo, Model model) {
 
         CategoryDTO category = categoryService.findCategoryByNo(categoryNo);
 
