@@ -1,16 +1,17 @@
 package com.havis.object.post.service;
 
 import com.havis.object.post.model.dto.PostRegisterDTO;
-import com.havis.object.post.model.dto.PostResponseDTO;
 import com.havis.object.post.model.entity.PostEntity;
 import com.havis.object.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +19,7 @@ import java.util.List;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final ModelMapper modelMapper;
 
     // 글 생성
     public void createPost(PostRegisterDTO postRegisterDTO) {
@@ -31,27 +33,44 @@ public class PostService {
         postRepository.saveAndFlush(postEntity);
     }
 
-    // 모든 글 가져오기
-    public List<PostEntity> findAllPost() {
-        try{
-            List<PostEntity> postEntityList = postRepository.findAll();
+    public Page<PostRegisterDTO> findAllPost(Pageable pageable) {
 
-            List<PostResponseDTO> postResponseDTOList = new ArrayList<>();
+        pageable = PageRequest.of(
+                pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1,
+                pageable.getPageSize(),
+                Sort.by("postNo").descending());
 
-            for (PostEntity postEntity : postEntityList) {
-                postResponseDTOList.add(
-                        new PostResponseDTO(postEntity)
-                );
+        Page<PostEntity> postList = postRepository.findAll(pageable);
 
-            }
+        return postList.map(postEntity -> modelMapper.map(postEntity, PostRegisterDTO.class));
 
-
-        } catch (Exception e) {
-
-        }
-
-        return null;
     }
+
+
+
+
+//    // 모든 글 가져오기
+//    public List<PostEntity> findAllPost() {
+//        try{
+//            List<PostEntity> postEntityList = postRepository.findAll();
+//
+//            List<PostResponseDTO> postResponseDTOList = new ArrayList<>();
+//
+//            for (PostEntity postEntity : postEntityList) {
+//                postResponseDTOList.add(
+//                        new PostResponseDTO(postEntity)
+//                );
+//
+//            }
+//
+//
+//        } catch (Exception e) {
+//
+//        }
+//
+//        return null;
+//    }
+
 
     // 업데이트
 //    public boolean updatePost(PostRegisterDTO postRegisterDTO){

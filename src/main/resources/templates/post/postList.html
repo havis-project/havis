@@ -56,7 +56,7 @@
 
 </head>
 <body>
-<form th:action="@{/post/view}" th:method="post">
+<form th:action="@{/post/postList}" th:method="post">
     <table class="table">
         <tr><td colspan="2"><h2>게시판 목록</h2></td></tr>
         <tr class="header">
@@ -66,33 +66,38 @@
             <td class="member">작성자</td>
             <!--        <td class="postDate">작성날짜</td>-->
         </tr>
-        <tbody>
-        <tr th:each="post : ${list}">
-            <td>
-                <a th:href="@{/post/{postNO}(postNO=${post_no})}"
-                   th:text="${post_no}">게시글 번호</a>
-            </td>
-        </tr>
-        </tbody>
 
-        <script>
-            const $list = document.getElementById();
 
-        </script>
-
-<!--        <tr>-->
-<!--            <td>{{postNO}}</td>-->
-<!--            <td>{{postTitle}}</td>-->
-<!--            <td>{{postText}}</td>-->
-<!--            <td>{{member}}</td>-->
-<!--        </tr>-->
-<!--        {{/posts}}-->
-        <tr th:each = "post : ${list}">
-            <td></td>
-
-        </tr>
     </table>
 
 </form>
+
+<div id="paging">
+
+    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.startPage } + '\''"><<</button>
+    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.currentPage - 1} + '\''"
+            th:disabled="${ postList.first }"><
+    </button>
+
+
+    <th:block th:each="page: ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+        <button th:onclick="'location.href=\'/post/list?page=' + '@{${page}} + '\''"
+                th:text="${page}"
+                th:disabled="${ paging.currentPage eq page }">
+        </button>
+    </th:block>
+
+
+    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.currentPage + 1} + '\''"
+            th:disabled="${ postList.last }">
+        >
+    </button>
+
+    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.endPage } + '\''">
+        >>
+    </button>
+
+</div>
+
 </body>
 </html>

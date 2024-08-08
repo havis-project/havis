@@ -1,15 +1,15 @@
 package com.havis.object.post.Controller;
 
 
-import com.havis.object.category.model.dto.CategoryDTO;
-import com.havis.object.post.model.entity.PostEntity;
+import com.havis.common.Pagenation;
+import com.havis.common.PagingButtonInfo;
 import com.havis.object.post.model.dto.PostRegisterDTO;
-import com.havis.object.post.model.dto.PostResponseDTO;
 import com.havis.object.post.service.PostService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.modeler.BaseAttributeFilter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -35,18 +35,27 @@ public class PostController {
         return "redirect:/";
     }
 
-    @GetMapping("/view")
-    public String postView() {
-        return "post/view";
+//    @PostMapping("/view")
+//    public String findAllPost(Model model) {
+//
+//
+//        model.addAttribute("list", postService.findAllPost());
+//        return "list";
+//    }
 
-    }
+    @GetMapping("/postList")
+    public String findAllPost(@PageableDefault Pageable pageable, Model model) {
 
-    @PostMapping("/view")
-    public String findAllPost(Model model) {
+        log.info("pageable = {}", pageable);
 
+        Page<PostRegisterDTO> postList = postService.findAllPost(pageable);
 
-        model.addAttribute("list", postService.findAllPost());
-        return "list";
+        PagingButtonInfo paging = Pagenation.getPagingButtonInfo(postList);
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("postList", postList);
+
+        return "postList";
     }
 
 
