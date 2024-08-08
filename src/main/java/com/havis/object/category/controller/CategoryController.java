@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/categories")
+@RequestMapping("/category")
 @RequiredArgsConstructor
 @Slf4j
 public class CategoryController {
@@ -24,20 +24,21 @@ public class CategoryController {
     private final CategoryService categoryService;
 
 
-
     @GetMapping("/create")
     public String category() {
-        return "categories/create";
+        return "category/create";
     }
 
     @PostMapping("/create")
     public String category(CategoryDTO categoryDTO) {
         categoryService.createCategory(categoryDTO);
-        return "redirect:/";
+        return "redirect:/category/create";
     }
 
-    @GetMapping("/list")
+    @GetMapping("/categoryList")
     public String findAllCategory(@PageableDefault Pageable pageable, Model model) {
+
+        log.info("pageable = {}", pageable);
 
         Page<CategoryDTO> categoryList = categoryService.findAllCategory(pageable);
 
@@ -46,6 +47,6 @@ public class CategoryController {
         model.addAttribute("paging", paging);
         model.addAttribute("categoryList", categoryList);
 
-        return "categories/list";
+        return "category/categoryList";
     }
 }
