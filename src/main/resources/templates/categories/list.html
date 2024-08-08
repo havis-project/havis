@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>카테고리번호</th>
+        <th>카테고리이름</th>
+        <th>생성날짜</th>
+        <th>수정날짜</th>
+
+    </tr>
+    <tr th:each="categories : ${menuList}">
+        <td th:text="${ categories.menuCode }"></td>
+        <td th:text="${ categories.menuName }"></td>
+        <td th:text="${ categories.menuPrice }"></td>
+    </tr>
+</table>
+<div id="paging">
+
+    <button th:onclick="'location.href=\'/menu/list?page=' + ${ paging.startPage } + '\''"><<</button>
+    <button th:onclick="'location.href=\'/menu/list?page=' + ${ paging.currentPage - 1} + '\''"
+            th:disabled="${ menuList.first }"><
+    </button>
+
+
+    <th:block th:each="page: ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+        <button th:onclick="'location.href=\'/menu/list?page=' + @{${page}} + '\''"
+                th:text="${page}"
+                th:disabled="${ paging.currentPage eq page }">
+        </button>
+    </th:block>
+
+
+    <button th:onclick="'location.href=\'/menu/list?page=' + ${ paging.currentPage + 1} + '\''"
+            th:disabled="${ menuList.last }">
+        >
+    </button>
+
+    <button th:onclick="'location.href=\'/menu/list?page=' + ${ paging.endPage } + '\''">
+        >>
+    </button>
+
+</div>
+</body>
+</html>
