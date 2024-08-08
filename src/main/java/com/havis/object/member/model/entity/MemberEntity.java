@@ -18,12 +18,12 @@ import java.time.LocalDateTime;
 @Builder
 public class MemberEntity extends BaseTimeEntity {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_no", unique = true, nullable = false, updatable = false)
     @Comment("회원번호")
     private int memberNo;
 
-    @Id
     @Column(name = "member_id", unique = true, nullable = false, updatable = false)
     @Comment("아이디")
     private String memberId;
