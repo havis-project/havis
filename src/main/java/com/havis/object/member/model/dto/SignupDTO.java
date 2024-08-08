@@ -16,8 +16,7 @@ public class SignupDTO {
 
     private String nickname;
 
-    private String emailId;
-    private String domain;
+    private String email;
 
     private String name;
     private String frontPhone;
