@@ -54,7 +54,7 @@ public class CategoryController {
     @GetMapping("/{categoryNo}")
     public String getCategoryDetail(@PathVariable int categoryNo, Model model) {
 
-        CategoryDTO category = categoryService.findCategoryByNo(categoryNo);
+        CategoryEntity category = categoryService.findCategoryByNo(categoryNo);
 
         model.addAttribute("category", category);
 
