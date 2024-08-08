@@ -7,6 +7,7 @@
         * {
             margin: 0;
             padding: 0;
+            white-space: nowrap;
         }
 
         body {
@@ -22,8 +23,9 @@
 
         .container {
             border: 1px solid black;
-            height: 80vh;
-            width: 30vw;
+            height: 700px;
+            width: 400px;
+            position: absolute;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -39,77 +41,52 @@
 
 <body>
 <div class="container">
-    <h1>하비스 회원가입</h1>
-    <form id="signup-form" th:action="@{/member/register}" th:method="post">
-        <div class="id">
-            <h3 class="list">아이디<span id="idError"></span></h3>
-            <span class="box int_id">
-                <input type="text" id="memberId" name="memberId" class="int check" maxlength="20">
-            </span>
+    <header>하비스 회원가입</header>
+    <form class="signup-form" th:action="@{/member/register}" th:method="post">
+        <div class="memberId">
+            <span>아이디</span>
+            <input type="text" id="memberId" name="memberId">
         </div>
+
         <div class="password">
-            <h3 class="list">비밀번호<span id="passwordError"></span></h3>
-            <span class="box int_password">
-                <input type="text" id="password" name="password" class="int check" maxlength="20">
-            </span>
+            <span>비밀번호</span>
+            <input type="text" id="password" name="password">
         </div>
-        <div class="passwordCheck">
-            <h3 class="list">비밀번호 확인<span id="passwordCheckError"></span></h3>
-            <span class="box int_passwordCheck">
-                <input type="text" class="int check" maxlength="20">
-            </span>
+
+        <div class="pwCheck">
+            <span>비밀번호 확인</span>
+            <input type="text" id="pwCheck" name="pwCheck">
         </div>
+
         <div class="nickname">
-            <h3 class="list">닉네임<span id="nicknameError"></span></h3>
-            <span class="box int_nickname">
-                <input type="text" id="nickname" name="nickname" class="int check" maxlength="6">
-            </span>
+            <span>닉네임</span>
+            <input type="text" id="nickname" name="nickname">
         </div>
-        <div class="name">
-            <h3 class="list">이름<span id="nameError"></span></h3>
-            <span class="box int_name">
-                <input type="text" id="name" name="name" class="int check">
-            </span>
-        </div>
-        <div class="name">
-            <h3 class="list">성별</h3>
-            <input type="radio" name="gender" value="남성">남성
-            <input type="radio" checked name="gender" value="여성">여성
-            </span>
-        </div>
-        <div class="birthday">
-            <h3 class="list">생년월일</h3>
-            <input type="date" name="birthday" id="birthday">
-        </div>
-        <div class="phone">
-            <h3 class="list">휴대폰번호 ( - 제외)<span id="phoneError"></span></h3>
-            <span class="box int_phone">
-                <input type="text" id="phone" name="phone" class="int check" maxlength="11">
-            </span>
-        </div>
+
         <div class="email">
-            <h3 class="list">이메일(선택사항)<span id="emailError"></span></h3>
-            <span class="box int_email">
-                <input type="text" id="emailId" name="emailId" class="check" maxlength="20">
-                <span>@</span>
-                <select id="emailSelect" name="emailSelect">
-                    <option>이메일 선택</option>
-                    <option>naver.com</option>
-                    <option>gmail.com</option>
-                    <option>hanmail.net</option>
-                    <option>daum.net</option>
-                    <option>nate.com</option>
-                    <option>hotmail.com</option>
-                    <option>yahoo.co.kr</option>
-                </select>
-            </span>
+            <span>이메일</span>
+            <input type="text" id="emailId" name="emailId">
+            <span>@</span>
+            <input type="text" id="domain" name="domain">
         </div>
+
+        <div class="phone">
+            <span>휴대폰 번호</span>
+            <span>010 - </span>
+            <input type="text" id="frontPhone" name="frontPhone" maxlength="4">
+            <span> - </span>
+            <input type="text" id="backPhone" name="backPhone" maxlength="4">
+        </div>
+
+        <div
+
         <div class="location">
             <h3 class="list">활동지(선택사항)</h3>
-            <select name="sido" id="sido"></select>
-            <select name="gugun" id="gugun"></select>
+            <select id="sido" name="sido"></select>
+            <select id="gugun" name="gugun"></select>
         </div>
-        <button type="submit">회원가입</button>
+
+        <button type="submit">가입하기</button>
     </form>
 </div>
 </body>
