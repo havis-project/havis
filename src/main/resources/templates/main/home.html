@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&display=swap" rel="stylesheet">
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -15,6 +14,7 @@
         }
 
         header {
+            user-select: none;
             background-color: indianred;
             height: 10vh;
             display: flex;
@@ -65,25 +65,22 @@
             padding-bottom: 40px;
             align-items: end;
         }
-
     </style>
 </head>
 
-<header>
+<header onclick="location.href='/main/home'">
     <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
     <span class="header havis">HAVIS</span>
     <span class="header since">since2024</span>
 </header>
 
 <body>
-
 <aside>
-    <a th:href="@{/member/mypage}">마이페이지</a>
+    <button onclick="location.href='/member/mypage'">마이페이지</button>
 </aside>
 
 <section>
     <h1>main section</h1>
 </section>
-
 </body>
 </html>

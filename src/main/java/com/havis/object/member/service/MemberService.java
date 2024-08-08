@@ -6,8 +6,12 @@ import com.havis.object.member.model.entity.RoleType;
 import com.havis.object.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -40,7 +44,7 @@ public class MemberService {
         String sigugun = signupDTO.getSigugun();
 
         if (sido.equals("시/도 선택")) {
-          return null;
+            return null;
         } else if (sigugun.equals("시/구/군 선택")) {
             return sido;
         } else {
@@ -48,8 +52,14 @@ public class MemberService {
         }
     }
 
-    public MemberEntity findMemberById(int memberNo) {
-        return memberRepository.findById(memberNo)
-                .orElseThrow(() -> new IllegalArgumentException("회원정보를 찾을 수 없습니다."));
+    public MemberEntity getCurrentUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            String memberId = ((UserDetails) principal).getUsername();
+            Optional<MemberEntity> member = memberRepository.findMemberByMemberId(memberId);
+            return member.orElse(null);
+        } else {
+            return null;
+        }
     }
 }

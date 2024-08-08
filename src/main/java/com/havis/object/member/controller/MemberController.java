@@ -33,10 +33,10 @@ public class MemberController {
     }
 
     // 마이페이지로 이동
-    @GetMapping("/{memberNo}")
-    public String getMemberInfo(@PathVariable int memberNo, Model model) {
+    @GetMapping("/mypage")
+    public String getMemberInfo(Model model) {
 
-        MemberEntity memberEntity = memberService.findMemberById(memberNo);
+        MemberEntity memberEntity = memberService.getCurrentUser();
 
         model.addAttribute("member", memberEntity);
 
