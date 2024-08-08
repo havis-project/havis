@@ -3,7 +3,6 @@ package com.havis.object.category.controller;
 import com.havis.common.Pagenation;
 import com.havis.common.PagingButtonInfo;
 import com.havis.object.category.model.dto.CategoryDTO;
-import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.category.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +12,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/category")
@@ -51,13 +48,16 @@ public class CategoryController {
         return "category/categoryList";
     }
 
-    @GetMapping("/{categoryNo}")
-    public String getCategoryDetail(@PathVariable int categoryNo, Model model) {
+    @GetMapping(value = "/{categoryNo}", produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public CategoryDTO categoryPage(@PathVariable int categoryNo){
 
-        CategoryEntity category = categoryService.findCategoryByNo(categoryNo);
+        CategoryDTO category = categoryService.findCategoryByNo(categoryNo);
 
-        model.addAttribute("category", category);
-
-        return "category/detail";
+        return category;
     }
+
+
+
+
 }
