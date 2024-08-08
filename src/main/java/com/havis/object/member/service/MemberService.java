@@ -21,7 +21,7 @@ public class MemberService {
 
         MemberEntity member = MemberEntity.builder()
                 .memberId(signupDTO.getMemberId())
-                .password(signupDTO.getPassword())
+                .password(passwordEncoder.encode(signupDTO.getPassword()))
                 .nickname(signupDTO.getNickname())
                 .email(signupDTO.getEmail())
                 .name(signupDTO.getName())
