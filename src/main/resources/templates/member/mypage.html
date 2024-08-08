@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MYPAGE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            white-space: nowrap;
+        }
+
+        body {
+            background-image: url('/images/pastelBackground.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            border: 1px solid black;
+            height: 700px;
+            width: 1200px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            text-align: center;
+        }
+
+        header {
+            border: 1px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90px;
+            font-size: 35px;
+        }
+
+        .myinfo {
+            border: 1px solid blue;
+            display: flex;
+            flex-direction: row;
+            height: 550px;
+        }
+        .button {
+            border: 1px solid green;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>마이페이지</header>
+    <div class="myinfo">
+        <span>아이디 : </span><span id="memberId" th:text = "${member.memberId}">memberId</span>
+        <span>닉네임 : </span><span id="nickname" th:text = "${member.nickname}">nickname</span>
+    </div>
+    <div class="button">
+        <button>수정하기</button>
+        <button><a href="/main/home">메인으로</a></button>
+    </div>
+</div>
+</body>
+</html>

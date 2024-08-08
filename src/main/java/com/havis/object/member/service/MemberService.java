@@ -47,4 +47,10 @@ public class MemberService {
             return sido + " " + sigugun;
         }
     }
+
+    public MemberEntity findMemberById(int memberNo) {
+        MemberEntity memberEntity = memberRepository.findById(memberNo)
+                .orElseThrow(() -> new IllegalArgumentException("회원정보를 찾을 수 없습니다."));
+        return memberEntity;
+    }
 }
