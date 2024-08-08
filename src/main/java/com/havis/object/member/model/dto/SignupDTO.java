@@ -19,8 +19,10 @@ public class SignupDTO {
     private String emailId;
     private String domain;
 
+    private String name;
     private String frontPhone;
     private String backPhone;
 
-
+    private String sido;
+    private String sigugun;
 }

@@ -21,6 +21,10 @@
             justify-content: center;
         }
 
+        header {
+            font-size: 35px;
+        }
+
         .container {
             border: 1px solid black;
             height: 700px;
@@ -28,12 +32,26 @@
             position: absolute;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-evenly;
             text-align: center;
         }
 
         input {
             background: none;
+        }
+
+        .title {
+            font-size: 20px;
+        }
+
+        .short {
+            background: none;
+            width: 60px;
+        }
+
+        button {
+            width: 150px;
+            height: 70px;
         }
     </style>
     <script src="/js/location.js"></script>
@@ -42,48 +60,48 @@
 <body>
 <div class="container">
     <header>하비스 회원가입</header>
-    <form class="signup-form" th:action="@{/member/register}" th:method="post">
+    <form name="signup_form" th:action="@{/member/register}" th:method="post">
         <div class="memberId">
-            <span>아이디</span>
-            <input type="text" id="memberId" name="memberId">
+            <input type="text" id="memberId" name="memberId" placeholder="아이디">
         </div>
 
         <div class="password">
-            <span>비밀번호</span>
-            <input type="text" id="password" name="password">
+            <input type="text" id="password" name="password" placeholder="비밀번호">
         </div>
 
         <div class="pwCheck">
-            <span>비밀번호 확인</span>
-            <input type="text" id="pwCheck" name="pwCheck">
+            <input type="text" id="pwCheck" name="pwCheck" placeholder="비밀번호 확인">
         </div>
 
         <div class="nickname">
-            <span>닉네임</span>
-            <input type="text" id="nickname" name="nickname">
+            <input type="text" id="nickname" name="nickname" placeholder="닉네임">
         </div>
 
         <div class="email">
-            <span>이메일</span>
-            <input type="text" id="emailId" name="emailId">
-            <span>@</span>
-            <input type="text" id="domain" name="domain">
+            <input type="email" id="emailId" name="emailId" placeholder="이메일">
+        </div>
+
+        <div class="name">
+            <input class="short"  type="text" id="name" name="name" placeholder="이름">
         </div>
 
         <div class="phone">
-            <span>휴대폰 번호</span>
+            <span class="title phone">휴대폰 번호</span>
             <span>010 - </span>
-            <input type="text" id="frontPhone" name="frontPhone" maxlength="4">
+            <input class="short"  type="text" id="frontPhone" name="frontPhone" maxlength="4">
             <span> - </span>
-            <input type="text" id="backPhone" name="backPhone" maxlength="4">
+            <input class="short"  type="text" id="backPhone" name="backPhone" maxlength="4">
         </div>
 
-        <div
+        <div class="birthday">
+            <span class="title birthday">생년월일</span>
+            <input type="date" id="birthday" name="birthday">
+        </div>
 
         <div class="location">
-            <h3 class="list">활동지(선택사항)</h3>
+            <span class="title loction">활동지(선택사항)</span>
             <select id="sido" name="sido"></select>
-            <select id="gugun" name="gugun"></select>
+            <select id="sigugun" name="sigugun"></select>
         </div>
 
         <button type="submit">가입하기</button>
