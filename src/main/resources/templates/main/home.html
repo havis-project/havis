@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&display=swap" rel="stylesheet">
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -14,6 +18,7 @@
             background-color: indianred;
             height: 10vh;
             display: flex;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
         }
@@ -43,23 +48,31 @@
             align-items: center;
         }
 
-        #haviskid {
-            width: 100px;
-            height: 200px;
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 95px;
+        }
+
+        .havis {
+            font-family: "Shrikhand", serif;
+            font-size: 90px;
+        }
+
+        .since {
+            font-family: "Gochi Hand", cursive;
+            padding-bottom: 40px;
+            align-items: end;
         }
 
     </style>
 </head>
 
 <header>
-    <div class="havisheader">
-    <span id="haviskid">
-       <img src="../../static/images/haviskid.png">
-    </span>
-        <span id="havis">HAVIS</span>
-        <span id="blank">  </span>
-        <span id="since">since2024</span>
-    </div>
+    <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png"></span>
+    <span class="header havis">HAVIS</span>
+    <span class="header since">since2024</span>
 </header>
 
 <body>
