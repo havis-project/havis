@@ -51,12 +51,13 @@
     <script>
         function searchCategory() {
             const categoryNo = document.getElementById('categoryNo').value;
-            if (categoryNo){
-                window.location.href = `/category/${categoryNo}`;
-            } else {
-                alert('카테고리 번호를 입력하세요')
-            }
+            fetch(`category/${categoryNo}`)
+                .then(res => res.json())
+                .then(data => {
+                    const $categoryNo = document.getElementById('categoryNo');
+                })
         }
+
     </script>
 
 </div>
