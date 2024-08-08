@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>게시판 전체 조회</title>
-<!--    <% request.setCharacterEncoding("utf-8");-->
-<!--    Post memberDao = MemberDao.getInstance();-->
-<!--    List<MemberBean> memberList = new ArrayList<MemberBean>();-->
-<!--    memberList = memberDao.allInfo();-->
-<!--    %>-->
-
     <style>
         table {
             margin: auto;
@@ -72,6 +66,14 @@
             <td class="member">작성자</td>
             <!--        <td class="postDate">작성날짜</td>-->
         </tr>
+        <tbody>
+        <tr th:each="post : ${list}">
+            <td>
+                <a th:href="@{/post/{postNO}(postNO=${post_no})}"
+                   th:text="${post_no}">게시글 번호</a>
+            </td>
+        </tr>
+        </tbody>
 
         <script>
             const $list = document.getElementById();

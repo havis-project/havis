@@ -41,7 +41,6 @@ public class PostController {
 
     }
 
-
     @PostMapping("/view")
     public String findAllPost(Model model) {
 
@@ -50,10 +49,6 @@ public class PostController {
         return "list";
     }
 
-//    @PostMapping
-//    public PostResponseDTO createPost(@RequestBody PostRegisterDTO postEntity) {
-//        return postService.createPost(postEntity);
-//    }
 
 //    @PutMapping("/{member_id}")
 //    public PostEntity updatePost(@PathVariable Long member, @RequestBody PostRegisterDTO updatedPost) {

@@ -18,17 +18,6 @@ import java.util.List;
 public class PostService {
 
     private final PostRepository postRepository;
-//
-//    public void createCategory(CategoryDTO categoryDTO) {
-//
-//        CategoryEntity category = CategoryEntity.builder()
-//                .categoryName(categoryDTO.getCategoryName())
-//                .build();
-//
-//        log.info("[카테고리생성] 카테고리명 : {}", category.getCategoryName());
-//
-//        categoryRepository.saveAndFlush(category);
-//    }
 
     // 글 생성
     public void createPost(PostRegisterDTO postRegisterDTO) {
@@ -64,6 +53,31 @@ public class PostService {
         return null;
     }
 
+    // 업데이트
+//    public boolean updatePost(PostRegisterDTO postRegisterDTO){
+//
+//        PostEntity postEntity = postRepository.findById(postRegisterDTO.getPostTitle().orElseThrow(RuntimeException::new);
+//        postEntity.modifypostEntity(postRegisterDTO.get()
+//                ,healthRequestDTO.getLand_number()
+//                ,healthRequestDTO.getRoad_number()
+//                ,healthRequestDTO.getCategory());
+//
+//        try{
+//            healthRepository.save(healthInfo);
+//        }catch (Exception e){
+//            return false;
+//        }
+//        return true;
+//    };
+
+//    @Transactional
+//    public PostEntity updatePost(Long member, PostRegisterDTO updatedPost) {
+//        PostEntity post = postRepository.findById(member).orElseThrow(() -> new IllegalArgumentException("잘못된 Post 입니다."));
+//        post.modify(updatedPost.getPostTitle(), post.getPostText());
+//
+//        return postRepository.save(post);
+//    }
+
 
 
     // 삭제
@@ -73,12 +87,6 @@ public class PostService {
         return member;
     }
 
-//    @Transactional
-//    public PostEntity updatePost(Long member, PostRegisterDTO updatedPost) {
-//        PostEntity post = postRepository.findById(member).orElseThrow(() -> new IllegalArgumentException("잘못된 Post 입니다."));
-//        post.update(updatedPost.getPostTitle(), post.getPostText());
-//
-//        return postRepository.save(post);
-//    }
+
 
 }
