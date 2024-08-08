@@ -13,6 +13,9 @@
         header {
             background-color: indianred;
             height: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         body {
@@ -24,27 +27,39 @@
             background-color: aquamarine;
             float: left;
             height: 90%;
-            width: 20%;
+            width: 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         section {
             background-color: lightgreen;
             float: left;
             height: 90%;
-            width: 80%;
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #haviskid {
+            width: 100px;
+            height: 200px;
         }
 
     </style>
 </head>
 
 <header>
-    <img src="images/haviskid.png" alt="haviskid">
-    <span id="havis">
-        HAVIS
+    <div class="havisheader">
+    <span id="haviskid">
+       <img src="../../static/images/haviskid.png">
     </span>
-    <span id="since">
-        since 2024
-    </span>
+        <span id="havis">HAVIS</span>
+        <span id="blank">  </span>
+        <span id="since">since2024</span>
+    </div>
 </header>
 
 <body>
