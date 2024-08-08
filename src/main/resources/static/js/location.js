@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var area16 = ["시/구/군 선택", "서귀포시", "제주시", "남제주군", "북제주군"];
 
     var sidoSelect = document.querySelector('select[name=sido]');
-    var gugunSelect = document.querySelector('select[name=gugun]');
+    var gugunSelect = document.querySelector('select[name=sigugun]');
 
     area0.forEach(function (area) {
         var option = document.createElement('option');
