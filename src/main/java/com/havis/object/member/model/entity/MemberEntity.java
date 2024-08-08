@@ -53,7 +53,7 @@ public class MemberEntity extends BaseTimeEntity {
     private LocalDate birthday;
 
     @Column(name = "phone", unique = true, nullable = false)
-    @Comment("전화번호")
+    @Comment("휴대폰번호")
     private String phone;
 
     @Column(name = "email", unique = true)

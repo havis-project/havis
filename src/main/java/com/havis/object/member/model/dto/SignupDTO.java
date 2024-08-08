@@ -18,6 +18,8 @@ public class SignupDTO {
     private String gender;
     private LocalDate birthday;
     private String phone;
-    private String email;
-    private String location;
+    private String emailId;
+    private String emailSelect;
+    private String sido;
+    private String gugun;
 }

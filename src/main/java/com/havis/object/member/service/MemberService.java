@@ -27,8 +27,8 @@ public class MemberService {
                 .gender(signupDTO.getGender())
                 .birthday(signupDTO.getBirthday())
                 .phone(signupDTO.getPhone())
-                .email(signupDTO.getEmail())
-                .location(signupDTO.getLocation())
+                .email(signupDTO.getEmailId() + '@' + signupDTO.getEmailSelect())
+                .location(signupDTO.getSido() + " " + signupDTO.getGugun())
                 .level(1)
                 .role(RoleType.valueOf("USER"))
                 .build();

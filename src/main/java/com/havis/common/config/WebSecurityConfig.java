@@ -15,7 +15,11 @@ public class WebSecurityConfig {
 
     @Bean
     public WebSecurityCustomizer securityCustomizer() {
-        return (web -> web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations()));
+        return (web) -> web
+                .ignoring()
+                .requestMatchers(PathRequest
+                        .toStaticResources()
+                        .atCommonLocations());
     }
 
 
