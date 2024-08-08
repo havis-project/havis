@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -44,4 +46,12 @@ public class CategoryService {
         return categoryList.map(categoryEntity -> modelMapper.map(categoryEntity, CategoryDTO.class));
 
     }
-    }
+
+    public CategoryDTO findCategoryByNo(int categoryNo) {
+
+        CategoryEntity category = categoryRepository.findById((long) categoryNo)
+                .orElseThrow(IllegalArgumentException::new);
+
+        return modelMapper.map(category, CategoryDTO.class);
+        }
+}
