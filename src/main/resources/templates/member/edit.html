@@ -26,38 +26,89 @@
         }
 
         .container {
-            border: 1px solid black;
             height: 700px;
             width: 700px;
+
+            font-size: 25px;
+
             position: absolute;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
             text-align: center;
+
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* 요소를 반투명 처리 해준 후 */
+            backdrop-filter: blur(15px); /* 요소 뒤에서 효과 적용 */
+            box-shadow: 2px 7px 15px 8px rgb(0, 0, 0, 0.3); /* 그림자 적용 */
+        }
+
+        div {
+            margin-bottom: 20px;
         }
 
         header {
-            border: 1px solid red;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 90px;
-            font-size: 35px;
-        }
-
-        .myinfo {
-            border: 1px solid blue;
-            display: flex;
-            flex-direction: column;
-            height: 550px;
+            font-size: 60px;
         }
 
         .button {
-            border: 1px solid green;
             display: flex;
             flex-direction: row;
             justify-content: center;
             height: 60px;
+        }
+
+        .edit {
+            border-radius: 10px;
+            display: inline-block;
+
+            background: none;
+
+            width: 100px;
+            height: 40px;
+
+            cursor: pointer;
+
+            font-family: "Jua", sans-serif;
+            font-size: 22px;
+        }
+
+        .edit:hover {
+            background-color: aqua;
+        }
+
+        .edit:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .back {
+            border-radius: 10px;
+            display: inline-block;
+
+            background: none;
+
+            width: 100px;
+            height: 40px;
+
+            cursor: pointer;
+
+            font-family: "Jua", sans-serif;
+            font-size: 22px;
+        }
+
+        .back:hover {
+            background-color: darkred;
+            color: whitesmoke;
+        }
+
+        .back:active {
+            position: relative;
+            top: 1px;
         }
     </style>
     <script src="/js/location.js"></script>
@@ -113,11 +164,11 @@
             </select>
         </div>
 
-        <button type="submit">수정하기</button>
+        <button class="edit" type="submit">수정하기</button>
     </form>
 
     <div class="button">
-        <button onclick="history.back()">돌아가기</button>
+        <button class="back" onclick="history.back()">돌아가기</button>
     </div>
 </div>
 </body>
