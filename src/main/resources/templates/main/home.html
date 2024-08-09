@@ -5,9 +5,9 @@
     <title>Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&family=Jua&display=swap"
+          rel="stylesheet">
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -15,8 +15,11 @@
         }
 
         header {
-            background-color: indianred;
+            user-select: none;
+            background: none;
+
             height: 10vh;
+
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -24,26 +27,34 @@
         }
 
         body {
-            background-color: darkgray;
+            background: none;
+
             height: 100vh;
         }
 
         aside {
-            background-color: aquamarine;
-            float: left;
+            user-select: none;
+
+            font-family: "Jua", sans-serif;
+
             height: 90%;
-            width: 10%;
+            width: 13%;
+
             display: flex;
+            float: left;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
         }
 
         section {
             background-color: lightgreen;
-            float: left;
+
             height: 90%;
-            width: 90%;
+            width: 87%;
+
             display: flex;
+            float: left;
             justify-content: center;
             align-items: center;
         }
@@ -66,24 +77,36 @@
             align-items: end;
         }
 
+        aside span {
+            margin: 15px;
+
+            font-size: 25px;
+        }
     </style>
 </head>
 
-<header>
-    <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png"></span>
+<header onclick="location.href='/main/home'">
+    <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
     <span class="header havis">HAVIS</span>
     <span class="header since">since2024</span>
 </header>
 
 <body>
-
 <aside>
-    <h1>aside</h1>
+    <span id="mypage" onclick="location.href='/member/mypage'">⚽마이페이지</span>
+    <span>🥎공지사항</span>
+    <span>🏈카테고리</span>
+    <span>⚾전체 글 조회</span>
+    <span>🏀자유게시판</span>
+    <span>🎱모임게시판</span>
+    <span>🏉취미 활동</span>
+    <span>🎃건의와 신고</span>
+    <span>🎯FAQ</span>
+    <span onclick="location.href='/auth/logout'">🏐로그아웃</span>
 </aside>
 
 <section>
     <h1>main section</h1>
 </section>
-
 </body>
 </html>

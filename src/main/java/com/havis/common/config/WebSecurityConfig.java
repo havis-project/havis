@@ -28,6 +28,9 @@ public class WebSecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorizationManagerRequestMatcherRegistry -> {
             authorizationManagerRequestMatcherRegistry
+                    .requestMatchers("/main/**").authenticated() // 메인홈은 인증된 사용자만 접근 가능
+                    .requestMatchers("/member/mypage").authenticated() // 마이페이지는 인증된 사용자만 접근 가능
+                    .requestMatchers("/member/edit").authenticated() // 정보수정 페이지는 인증된 사용자만 접근 가능
                     .anyRequest().permitAll();
         }));
 

@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>하비스 회원가입</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             white-space: nowrap;
+            font-family: "Jua", sans-serif;
         }
 
         body {
@@ -23,6 +27,7 @@
 
         header {
             font-size: 35px;
+            margin-bottom: 40px;
         }
 
         .container {
@@ -32,20 +37,27 @@
             position: absolute;
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
+        div {
+            margin-bottom: 10px;
+        }
+
         input {
+            text-align: center;
             background: none;
+            width: 200px;
+            height: 40px;
         }
 
         .title {
             font-size: 20px;
         }
 
-        .short {
-            background: none;
+        .phone {
             width: 60px;
         }
 
@@ -60,46 +72,46 @@
 <body>
 <div class="container">
     <header>하비스 회원가입</header>
-    <form name="signup_form" th:action="@{/member/register}" th:method="post">
+    <form name="memberSignup" th:action="@{/member/register}" th:method="post">
         <div class="memberId">
-            <input type="text" id="memberId" name="memberId" placeholder="아이디">
+            <input type="text" id="memberId" name="memberId" placeholder="사용하실 [아이디]를 입력하세요">
         </div>
 
         <div class="password">
-            <input type="password" id="password" name="password" placeholder="비밀번호">
+            <input type="password" id="password" name="password" placeholder="사용하실 [비밀번호]를 입력하세요">
         </div>
 
         <div class="pwCheck">
-            <input type="password" id="pwCheck" name="pwCheck" placeholder="비밀번호 확인">
+            <input type="password" id="pwCheck" name="pwCheck" placeholder="[비밀번호]를 한번 더 입력하세요">
         </div>
 
         <div class="nickname">
-            <input type="text" id="nickname" name="nickname" placeholder="닉네임">
+            <input type="text" id="nickname" name="nickname" placeholder="사용하실 [닉네임]을 입력하세요">
         </div>
 
         <div class="email">
-            <input type="email" id="email" name="email" placeholder="이메일">
+            <input type="email" id="email" name="email" placeholder="사용하실 [이메일]을 입력하세요">
         </div>
 
         <div class="name">
-            <input class="short"  type="text" id="name" name="name" placeholder="이름">
+            <input type="text" id="name" name="name" placeholder="[실명]을 입력하세요">
         </div>
 
         <div class="phone">
-            <span class="title phone">휴대폰 번호</span>
+            <label class="title phone">휴대폰 번호</label>
             <span>010 - </span>
-            <input class="short"  type="text" id="frontPhone" name="frontPhone" maxlength="4">
+            <input class="phone input" type="text" id="frontPhone" name="frontPhone" maxlength="4">
             <span> - </span>
-            <input class="short"  type="text" id="backPhone" name="backPhone" maxlength="4">
+            <input class="phone input" type="text" id="backPhone" name="backPhone" maxlength="4">
         </div>
 
         <div class="birthday">
-            <span class="title birthday">생년월일</span>
-            <input type="date" id="birthday" name="birthday">
+            <label class="title birthday">생년월일</label>
+            <input class="birthday input" type="date" id="birthday" name="birthday">
         </div>
 
         <div class="location">
-            <span class="title loction">활동지(선택사항)</span>
+            <label class="title loction">활동지(선택사항)</label>
             <select id="sido" name="sido">
             </select>
             <select id="sigugun" name="sigugun">
