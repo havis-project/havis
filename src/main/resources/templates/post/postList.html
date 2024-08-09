@@ -82,15 +82,15 @@
 
         <form id="searchForm">
             <label for="postTitle">게시물 제목</label>
-            <input type="String" id="postTitle" name="postTitle" required />
-            <button type="button" onclick="searchPost()">조회하기</button>
+            <input type="text" id="postTitle" name="postTitle" required />
+            <button type="button" onclick="searchPost()" >조회하기</button>
         </form>
     </div>
     <script>
         function searchPost() {
             const postTitle = document.getElementById('postTitle').value;
             if (postTitle) {
-                window.location.href = `/postList/${postTitle}`;
+                window.location.href = `/post/${postTitle}`;
             } else {
                 alert('게시글 제목을 입력하세요')
             }

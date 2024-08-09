@@ -65,7 +65,7 @@ public class PostController {
 
         model.addAttribute("postEntity", postEntity);
 
-        return "post/detail";
+        return "post/postDetail";
     }
 
 

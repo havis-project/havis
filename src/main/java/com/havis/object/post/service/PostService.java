@@ -13,6 +13,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import static java.lang.Long.valueOf;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -52,7 +54,7 @@ public class PostService {
         PostEntity postEntity = postRepository.findById(Long.valueOf(postTitle))
                 .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
 
-        return postEntity;
+        return postEntity.builder().postTitle(postEntity.getPostTitle()).build();
     }
 
     @Transactional
