@@ -48,7 +48,7 @@
 
 
     <th:block th:each="page: ${ #numbers.sequence(paging.startPage, paging.endPage)}">
-        <button th:onclick="'location.href=\'/category/list?page=' + '@{${page}} + '\''"
+        <button th:onclick="'location.href=\'/category/list?page=' + ${page} + '\''"
                 th:text="${page}"
                 th:disabled="${ paging.currentPage eq page }">
         </button>
