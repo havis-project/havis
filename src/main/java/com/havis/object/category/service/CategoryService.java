@@ -44,4 +44,14 @@ public class CategoryService {
         return categoryList.map(categoryEntity -> modelMapper.map(categoryEntity, CategoryDTO.class));
 
     }
+
+    public CategoryDTO findCategoryByNo(int categoryNo) {
+
+        CategoryEntity category = categoryRepository.findById(categoryNo)
+                .orElseThrow(() -> new IllegalArgumentException("카테고리를 찾을수 없습니다."));
+
+        return modelMapper.map(category, CategoryDTO.class);
+
     }
+
+}
