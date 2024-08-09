@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>postCreate</title>
+</head>
+<body>
+<form th:action="@{/post/postCreate}" th:method="post">
+    <table class="table">
+        <tr><td colspan="2"><h2>게시판</h2></td></tr>
+        <tr class="header">
+            <td class="postNo">번호</td>
+            <td class="postTitle">제목</td>
+            <td class="postText">내용</td>
+            <td class="member">작성자</td>
+            <!--        <td class="postDate">작성날짜</td>-->
+        </tr>
+        <div>
+            <label>글 제목 : </label>
+            <input type="text" name="postTitle" id="postTitle">
+            <label>글 내용 : </label>
+            <input type="text" name="postText" id="postText">
+<!--            <label>작성자 : </label>-->
+<!--            <input type="text" name="member" id="member">-->
+        </div>
+        <button type="submit">글 작성</button>
+    </table>
+    </form>
+</body>
+
+</html>

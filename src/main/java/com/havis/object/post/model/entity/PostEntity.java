@@ -55,4 +55,16 @@ public class PostEntity extends BaseTimeEntity {
     @JoinColumn(name = "category_no")
     @Comment("게시글카테고리")
     private CategoryEntity category;
+    private LocalDateTime modifiedAt;
+    private LocalDateTime createdAt;
+
+
+    public void updatePostEntity(String postText) {
+
+        this.postText = postText;
+
+
+
+    }
+
 }

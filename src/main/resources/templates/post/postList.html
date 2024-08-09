@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 목록</title>
+    <style>
+        table {
+            margin: auto;
+            width: 700px;
+            border-radius: 5px;
+            border-collapse: collapse;
+            border-top: none;
+        }
+        .header {
+            background-color: rgb(218, 231, 255);
+            text-align: center;
+        }
+        .table td, .table th {
+            border-bottom: 1px lightgray solid;
+            height: 30px;
+            font-size: 14px;
+        }
+        .postNo {
+            width: 50px;
+        }
+        .postTitle {
+            width: 200px;
+        }
+        .postText {
+            text-align: center;
+        }
+        .postText .postTitle {
+            text-align: left;
+        }
+        button {
+            width: 100px;
+            height: 40px;
+            font-size: 15px;
+            border: 0;
+            outline: 1.5px rgb(68, 136, 244) solid;
+            border-radius: 5px;
+            padding-left: 10px;
+            background-color: rgb(164, 199, 255);
+        }
+        button:active {
+            width: 100px;
+            height: 40px;
+            font-size: 15px;
+            border: 0;
+            border-radius: 5px;
+            outline: 1.5px rgb(27, 76, 155) solid;
+            padding-left: 10px;
+            background-color: rgb(68, 136, 244);
+        }
+    </style>
+
+</head>
+<body>
+<form th:action="@{/post/postList}" th:method="post">
+    <table class="table">
+        <tr><td colspan="4"><h2>게시판 목록</h2></td></tr>
+        <tr class="header">
+            <th>번호</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성자</th>
+            <!--        <td class="postDate">작성날짜</td>-->
+        </tr>
+        <tr th:each="post : ${postList}">
+            <td th:text="${ post.postNo }"></td>
+            <td th:text="${ post.postTitle }"></td>
+            <td th:text="${ post.postText }"></td>
+            <td th:text="${ post.member }"></td>
+
+        </tr>
+
+
+    </table>
+
+    <div >
+        <a th:href="@{/post/postList}">게시글 단일 조회</a>
+
+        <form id="searchForm">
+            <label for="postTitle">게시물 제목</label>
+            <input type="text" id="postTitle" name="postTitle" required />
+            <button type="button" onclick="searchPost()" >조회하기</button>
+        </form>
+    </div>
+    <script>
+        function searchPost() {
+            const postTitle = document.getElementById('postTitle').value;
+            if (postTitle) {
+                window.location.href = `/post/${postTitle}`;
+            } else {
+                alert('게시글 제목을 입력하세요')
+            }
+        }
+    </script>
+
+
+</form>
+
+<div id="paging">
+
+    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.startPage } + '\''"><<</button>
+    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.currentPage - 1} + '\''"
+            th:disabled="${ postList.first }"><
+    </button>
+
+
+    <th:block th:each="page: ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+        <button th:onclick="'location.href=\'/post/list?page=' + ${page} + '\''"
+                th:text="${page}"
+                th:disabled="${ paging.currentPage eq page }">
+        </button>
+    </th:block>
+
+
+    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.currentPage + 1} + '\''"
+            th:disabled="${ postList.last }">
+        >
+    </button>
+
+    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.endPage } + '\''">
+        >>
+    </button>
+
+</div>
+
+</body>
+</html>

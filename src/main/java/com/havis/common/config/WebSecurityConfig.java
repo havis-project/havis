@@ -23,6 +23,9 @@ public class WebSecurityConfig {
                         .atCommonLocations());
     }
 
+
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
