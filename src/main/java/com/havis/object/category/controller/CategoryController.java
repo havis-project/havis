@@ -7,11 +7,14 @@ import com.havis.object.category.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
 
 @Controller
 @RequestMapping("/category")
@@ -34,30 +37,30 @@ public class CategoryController {
     }
 
     @GetMapping("/categoryList")
-    public String findAllCategory(@PageableDefault Pageable pageable, Model model) {
+    public String findAllCategory(
+            @RequestParam(name = "categoryNo", required = false) Integer categoryNo,
+            @PageableDefault Pageable pageable,
+            Model model) {
 
         log.info("pageable = {}", pageable);
 
-        Page<CategoryDTO> categoryList = categoryService.findAllCategory(pageable);
+        Page<CategoryDTO> categoryList;
 
+        categoryList = categoryService.findAllCategory(pageable);
         PagingButtonInfo paging = Pagenation.getPagingButtonInfo(categoryList);
-
         model.addAttribute("paging", paging);
         model.addAttribute("categoryList", categoryList);
 
+
+        // num 값의 여부에 따른 처리
+        if (categoryNo != null) {
+            // categoryNo가 있을 경우 해당 카테고리만 조회
+            CategoryDTO category = categoryService.findCategoryByNo(categoryNo);
+//            categoryList = new PageImpl<>(Collections.singletonList(category)); // 단일 카테고리를 페이지로 감싸기
+            model.addAttribute("category", category);
+        }
+
+
         return "category/categoryList";
     }
-
-    @GetMapping(value = "/{categoryNo}", produces = "application/json; charset=utf-8")
-    @ResponseBody
-    public CategoryDTO categoryPage(@PathVariable int categoryNo){
-
-        CategoryDTO category = categoryService.findCategoryByNo(categoryNo);
-
-        return category;
-    }
-
-
-
-
 }
