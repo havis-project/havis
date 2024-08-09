@@ -5,7 +5,7 @@
     <title>Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&family=Jua&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -30,11 +30,15 @@
 
         aside {
             user-select: none;
+
+            font-family: "Jua", sans-serif;
+
             background-color: aquamarine;
-            float: left;
             height: 90%;
             width: 10%;
+
             display: flex;
+            float: left;
             flex-direction: column;
             align-items: center;
         }
@@ -85,9 +89,9 @@
 
 <body>
 <aside>
-    <span id="mypage" onclick="location.href='/member/mypage'">❤마이페이지</span>
+    <span id="mypage" onclick="location.href='/member/mypage'">⚽마이페이지</span>
     <form  class="logout" th:action="@{/auth/logout}" method="post">
-        <span>💘로그아웃</span>
+        <span>🏐로그아웃</span>
     </form>
 </aside>
 

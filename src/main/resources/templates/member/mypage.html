@@ -26,38 +26,94 @@
         }
 
         .container {
-            border: 1px solid black;
             height: 700px;
             width: 700px;
+
             position: absolute;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
             text-align: center;
+
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* 요소를 반투명 처리 해준 후 */
+            backdrop-filter: blur(15px); /* 요소 뒤에서 효과 적용 */
+            box-shadow: 2px 7px 15px 8px rgb(0, 0, 0, 0.3);
         }
 
         header {
-            border: 1px solid red;
+            height: 90px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 90px;
-            font-size: 35px;
+
+            font-size: 60px;
+        }
+
+        div {
+            margin-bottom: 20px;
         }
 
         .myInfo {
-            border: 1px solid blue;
+            font-size: 25px;
+
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
             height: 550px;
         }
 
-        .button {
-            border: 1px solid green;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            height: 60px;
+        .toEdit {
+            border-radius: 10px;
+            display: inline-block;
+
+            background: none;
+
+            width: 100px;
+            height: 40px;
+
+            cursor: pointer;
+
+            font-family: "Jua", sans-serif;
+            font-size: 22px;
+        }
+
+        .toEdit:hover {
+            background-color: aqua;
+        }
+
+        .toEdit:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .toMain {
+            border-radius: 10px;
+            display: inline-block;
+
+            background: none;
+
+            width: 100px;
+            height: 40px;
+
+            cursor: pointer;
+
+            font-family: "Jua", sans-serif;
+            font-size: 22px;
+        }
+
+        .toMain:hover {
+            background-color: darkred;
+            color: whitesmoke;
+        }
+
+        .toMain:active {
+            position: relative;
+            top: 1px;
         }
     </style>
 </head>
@@ -89,8 +145,8 @@
         <div>활동지 : <span id="location" th:text="${member.location}">location</span></div>
     </div>
     <div class="button">
-        <button onclick="location.href='/member/edit'">정보수정</button>
-        <button onclick="location.href='../main/home'">메인으로</button>
+        <button class="toEdit" onclick="location.href='/member/edit'">정보수정</button>
+        <button class="toMain" onclick="location.href='../main/home'">메인으로</button>
     </div>
 </div>
 </body>
