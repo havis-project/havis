@@ -1,7 +1,6 @@
 package com.havis.object.member.controller;
 
 import com.havis.object.member.model.dto.SignupDTO;
-import com.havis.object.member.model.dto.MemberUpdateDTO;
 import com.havis.object.member.model.entity.MemberEntity;
 import com.havis.object.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -53,8 +52,8 @@ public class MemberController {
     }
 
     @PostMapping("/edit")
-    public String updateMemberInfo(@AuthenticationPrincipal UserDetails user, MemberUpdateDTO memberUpdateDTO) {
-        memberService.updateMemberInfo(user.getUsername(), memberUpdateDTO);
+    public String updateMemberInfo(@AuthenticationPrincipal UserDetails user, SignupDTO signupDTO) {
+        memberService.updateMemberInfo(user.getUsername(), signupDTO);
         return "redirect:/member/mypage";
     }
 }

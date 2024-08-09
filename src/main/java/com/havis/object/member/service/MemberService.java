@@ -1,6 +1,5 @@
 package com.havis.object.member.service;
 
-import com.havis.object.member.model.dto.MemberUpdateDTO;
 import com.havis.object.member.model.dto.SignupDTO;
 import com.havis.object.member.model.entity.MemberEntity;
 import com.havis.object.member.model.entity.RoleType;
@@ -35,7 +34,7 @@ public class MemberService {
 
         log.info("[회원가입] 회원번호 : {}, id : {}", member.getMemberNo(), member.getMemberId());
 
-        memberRepository.saveAndFlush(member);
+        memberRepository.save(member);
     }
 
     private String locationCheck(SignupDTO signupDTO) {
@@ -58,10 +57,42 @@ public class MemberService {
         return member;
     }
 
-    public void updateMemberInfo(String userId, MemberUpdateDTO memberUpdateDTO) {
+    public void updateMemberInfo(String userId, SignupDTO signupDTO) {
         MemberEntity member = memberRepository.findMemberByMemberId(userId)
                 .orElseThrow(() -> new NoSuchElementException("회원정보를 찾을 수 없습니다."));
 
-        member.
+        MemberEntity.MemberEntityBuilder builder = member.toBuilder(); // 기존 회원정보에 toBuilder 사용 정의
+
+        if (!signupDTO.getPassword().isEmpty()) {
+            builder.password(signupDTO.getPassword());
+        }
+
+        if (!signupDTO.getNickname().isEmpty()) {
+            builder.nickname(signupDTO.getNickname());
+        }
+
+        if (!signupDTO.getEmail().isEmpty()) {
+            builder.email(signupDTO.getEmail());
+        }
+
+        if (!signupDTO.getName().isEmpty()) {
+            builder.name(signupDTO.getName());
+        }
+
+        if (!signupDTO.getFrontPhone().isEmpty() && !signupDTO.getBackPhone().isEmpty()) {
+            builder.phone("010-" + signupDTO.getFrontPhone() + signupDTO.getBackPhone());
+        }
+
+        if (signupDTO.getBirthday() != null) {
+            builder.birthday(signupDTO.getBirthday());
+        }
+
+        if (!signupDTO.getSido().equals("시/도 선택")) {
+            builder.location(locationCheck(signupDTO));
+        }
+
+        MemberEntity updateMember = builder.build(); // 업데이트할 내용 build
+
+        memberRepository.save(updateMember); // 업데이트한 정보 저장
     }
 }

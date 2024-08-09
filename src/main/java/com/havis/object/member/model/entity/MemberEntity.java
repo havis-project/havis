@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @ToString
-@Builder
+@Builder(toBuilder = true)
 public class MemberEntity extends BaseTimeEntity {
 
     @Id
