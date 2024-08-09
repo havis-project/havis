@@ -1,5 +1,6 @@
 package com.havis.object.member.service;
 
+import com.havis.object.member.model.dto.MemberUpdateDTO;
 import com.havis.object.member.model.dto.SignupDTO;
 import com.havis.object.member.model.entity.MemberEntity;
 import com.havis.object.member.model.entity.RoleType;
@@ -27,7 +28,8 @@ public class MemberService {
                 .nickname(signupDTO.getNickname())
                 .email(signupDTO.getEmail())
                 .name(signupDTO.getName())
-                .phone("010" + signupDTO.getFrontPhone() + signupDTO.getBackPhone())
+                .phone("010-" + signupDTO.getFrontPhone() + "-" + signupDTO.getBackPhone())
+                .birthday(signupDTO.getBirthday())
                 .location(locationCheck(signupDTO))
                 .level(1).role(RoleType.valueOf("USER")).build();
 
@@ -54,5 +56,12 @@ public class MemberService {
         MemberEntity member = memberRepository.findMemberByMemberId(userId) // 로그인 되어있는 id로 회원정보 가져오기
                 .orElseThrow(() -> new NoSuchElementException("회원정보를 찾을 수 없습니다.")); // 실패할 시 오류메세지 반환
         return member;
+    }
+
+    public void updateMemberInfo(String userId, MemberUpdateDTO memberUpdateDTO) {
+        MemberEntity member = memberRepository.findMemberByMemberId(userId)
+                .orElseThrow(() -> new NoSuchElementException("회원정보를 찾을 수 없습니다."));
+
+        member.
     }
 }

@@ -9,9 +9,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-public class SignupDTO {
-
-    private String memberId;
+public class MemberUpdateDTO {
 
     private String password;
     private String pwCheck;

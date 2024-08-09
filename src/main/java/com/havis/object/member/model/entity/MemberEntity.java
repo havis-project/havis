@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.Comment;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -46,6 +47,10 @@ public class MemberEntity extends BaseTimeEntity {
     @Column(name = "phone", unique = true, nullable = false)
     @Comment("휴대폰번호")
     private String phone;
+
+    @Column(name = "birthday", nullable = false)
+    @Comment("생년월일")
+    private LocalDate birthday;
 
     @Column(name = "email", unique = true)
     @Comment("이메일")

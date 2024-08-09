@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>하비스 회원가입</title>
+    <title>내 정보 수정</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -25,80 +25,73 @@
             justify-content: center;
         }
 
-        header {
-            font-size: 35px;
-            margin-bottom: 40px;
-        }
-
         .container {
             border: 1px solid black;
             height: 700px;
-            width: 400px;
+            width: 700px;
             position: absolute;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-evenly;
+            text-align: center;
+        }
+
+        header {
+            border: 1px solid red;
+            display: flex;
             align-items: center;
-            text-align: center;
+            justify-content: center;
+            height: 90px;
+            font-size: 35px;
         }
 
-        div {
-            margin-bottom: 10px;
+        .myinfo {
+            border: 1px solid blue;
+            display: flex;
+            flex-direction: column;
+            height: 550px;
         }
 
-        input {
-            text-align: center;
-            background: none;
-            width: 200px;
-            height: 40px;
-        }
-
-        .title {
-            font-size: 20px;
-        }
-
-        .phone {
-            width: 60px;
-        }
-
-        button {
-            width: 150px;
-            height: 70px;
+        .button {
+            border: 1px solid green;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            height: 60px;
         }
     </style>
-    <script src="/js/location.js"></script>
 </head>
-
 <body>
 <div class="container">
-    <header>하비스 회원가입</header>
-    <form name="memberSignup" th:action="@{/member/register}" th:method="post">
-        <div class="memberId">
-            <input type="text" id="memberId" name="memberId" placeholder="사용하실 [아이디]를 입력하세요">
-        </div>
-
+    <header>내 정보 수정하기</header>
+    <form name="memberInfoUpdate" th:action="@{/member/edit}" th:method="post">
         <div class="password">
-            <input type="password" id="password" name="password" placeholder="사용하실 [비밀번호]를 입력하세요">
+            <label class="title password">비밀번호 : </label>
+            <input type="text" id="password" name="password">
         </div>
 
         <div class="pwCheck">
-            <input type="password" id="pwCheck" name="pwCheck" placeholder="[비밀번호]를 한번 더 입력하세요">
+            <label class="title pwCheck">비밀번호 확인 : </label>
+            <input type="password" id="pwCheck" name="pwCheck">
         </div>
 
         <div class="nickname">
-            <input type="text" id="nickname" name="nickname" placeholder="사용하실 [닉네임]을 입력하세요">
+            <label class="title nickname">닉네임 : </label>
+            <input type="text" id="nickname" name="nickname" th:placeholder="${member.nickname}">
         </div>
 
         <div class="email">
-            <input type="email" id="email" name="email" placeholder="사용하실 [이메일]을 입력하세요">
+            <label class="title email">이메일 : </label>
+            <input type="email" id="email" name="email" th:placeholder="${member.email}">
         </div>
 
         <div class="name">
-            <input type="text" id="name" name="name" placeholder="[실명]을 입력하세요">
+            <label class="title name">이름 : </label>
+            <input type="text" id="name" name="name" th:placeholder="${member.name}">
         </div>
 
         <div class="phone">
-            <label class="title phone">휴대폰 번호</label>
+            <label class="title phone">휴대폰 번호 : </label>
             <span>010 - </span>
             <input class="phone input" type="text" id="frontPhone" name="frontPhone" maxlength="4">
             <span> - </span>
@@ -106,12 +99,12 @@
         </div>
 
         <div class="birthday">
-            <label class="title birthday">생년월일</label>
+            <label class="title birthday">생년월일 </label>
             <input class="birthday input" type="date" id="birthday" name="birthday">
         </div>
 
         <div class="location">
-            <label class="title loction">활동지(선택사항)</label>
+            <label class="title loction">활동지(선택사항) </label>
             <select id="sido" name="sido">
             </select>
             <select id="sigugun" name="sigugun">
@@ -119,8 +112,12 @@
             </select>
         </div>
 
-        <button type="submit">가입하기</button>
+        <button type="submit">수정하기</button>
     </form>
+
+    <div class="button">
+        <button onclick="history.back()">돌아가기</button>
+    </div>
 </div>
 </body>
 </html>
