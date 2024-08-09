@@ -63,4 +63,22 @@ public class CategoryController {
 
         return "category/categoryList";
     }
+
+    @GetMapping("/modify/{categoryNo}")
+    public String modifyPage(@PathVariable int categoryNo, Model model) {
+
+        CategoryDTO category = categoryService.findCategoryByNo(categoryNo);
+
+        model.addAttribute("category", category);
+
+        return "category/modify";
+    }
+
+    @PostMapping("/modify")
+    public String modifyCategoryName(CategoryDTO modifyCategoryName) {
+
+        categoryService.modifyCategoryName(modifyCategoryName);
+
+        return "redirect:/category/categoryList";
+    }
 }

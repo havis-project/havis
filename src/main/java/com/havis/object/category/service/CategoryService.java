@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -54,4 +55,20 @@ public class CategoryService {
 
     }
 
+    @Transactional
+    public void modifyCategoryName(CategoryDTO modifyCategoryName) {
+
+        log.info("modifyCategoryName : {}", modifyCategoryName);
+
+        CategoryEntity foundCategoryName = categoryRepository.findById(modifyCategoryName.getCategoryNo())
+                .orElseThrow(()-> new IllegalArgumentException("CategoryName not found"));
+
+        log.info("foundCategoryName : {} ", foundCategoryName);
+
+        foundCategoryName.changeName(modifyCategoryName.getCategoryName());
+
+        log.info("foundCategoryName : {}", foundCategoryName);
+
+        categoryRepository.save(foundCategoryName);
+    }
 }
