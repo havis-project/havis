@@ -49,40 +49,39 @@ public class PostService {
 
     }
 
-    public PostEntity findPostById(String postTitle) {
+//    public PostEntity findPostById(String postTitle) {
+//
+//        PostEntity postEntity = postRepository.findById(Long.valueOf(postTitle))
+//                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
+//
+//        return postEntity.builder().postTitle(postEntity.getPostTitle()).build();
+//    }
 
-        PostEntity postEntity = postRepository.findById(Long.valueOf(postTitle))
-                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
-
-        return postEntity.builder().postTitle(postEntity.getPostTitle()).build();
-    }
-
-    @Transactional
-    public boolean updatePost(PostRegisterDTO postRegisterDTO){
-
-        PostEntity postEntity = postRepository.findById(Long.valueOf(postRegisterDTO.getPostTitle())).orElseThrow(RuntimeException::new);
-        postEntity.updatePostEntity(postRegisterDTO.getPostText());
-//                ,postRegisterDTO.getLand_number()
-//                ,postRegisterDTO.getRoad_number()
-//                ,postRegisterDTO.getCategory());
-
-        try{
-            postRepository.save(postEntity);
-        }catch (Exception e){
-            return false;
-        }
-        return true;
-    };
-
+//    @Transactional
+//    public boolean updatePost(PostRegisterDTO postRegisterDTO){
+//
+//        PostEntity postEntity = postRepository.findById(postRegisterDTO.getPostTitle()).orElseThrow(RuntimeException::new);
+//        postEntity.updatePostEntity(postRegisterDTO.getPostText());
+////                ,postRegisterDTO.getLand_number()
+////                ,postRegisterDTO.getRoad_number()
+////                ,postRegisterDTO.getCategory());
+//
+//        try{
+//            postRepository.save(postEntity);
+//        }catch (Exception e){
+//            return false;
+//        }
+//        return true;
+//    };
 
 
     // 삭제
     @Transactional
-    public Long deletePost(Long member) {
-        postRepository.deleteById(member);
-        return member;
+    public void deletePost(Integer postNo) {
+
+            postRepository.deleteById(postNo);
+
+
     }
-
-
 
 }

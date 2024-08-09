@@ -35,10 +35,24 @@ public class PostController {
     }
 
 
+
     @PostMapping("/postCreate")
     public String post(PostRegisterDTO postRegisterDTO) {
         postService.createPost(postRegisterDTO);
         return "redirect:/";
+    }
+
+    @GetMapping("/postDelete")
+    public void postDelete() {
+    }
+
+    // 삭제
+    @PostMapping("/postDelete")
+    public String deletePost(@RequestParam Integer postNo) {
+
+        postService.deletePost(postNo);
+
+        return "redirect:/post/postList";
     }
 
     // 전체 조회
@@ -57,35 +71,46 @@ public class PostController {
         return "post/postList";
     }
 
-    // 상세 조회
-    @GetMapping("/{postTitle}")
-    public String PostDetail(@PathVariable String postTitle, Model model) {
-
-        PostEntity postEntity = postService.findPostById(postTitle);
-
-        model.addAttribute("postEntity", postEntity);
-
-        return "post/postDetail";
-    }
-
-
-    // 수정
-    @PutMapping("/postModify")
-    public ResponseEntity<Boolean> updatePost(@RequestBody PostRegisterDTO postRegisterDTO){
-        try{
-            postService.updatePost(postRegisterDTO);
-        }catch (Exception e){
-            return ResponseEntity.ok(false);
-        }
-
-        return ResponseEntity.ok(true);
-    }
+//    // 상세 조회
+//    @GetMapping("/{postTitle}")
+//    public String PostDetail(@PathVariable String postTitle, Model model) {
+//
+//        PostEntity postEntity = postService.findPostById(postTitle);
+//
+//        model.addAttribute("postEntity", postEntity);
+//
+//        return "post/postDetail";
+//    }
 
 
-    @DeleteMapping("/{member_id}")
-    public void deletePost(@PathVariable Long member) {
-        postService.deletePost(member);
-    }
+//    // 수정
+//    @PutMapping("/postModify")
+//    public ResponseEntity<Boolean> updatePost(@RequestBody PostRegisterDTO postRegisterDTO){
+//        try{
+//            postService.updatePost(postRegisterDTO);
+//        }catch (Exception e){
+//            return ResponseEntity.ok(false);
+//        }
+//
+//        return ResponseEntity.ok(true);
+//    }
+
+
+
+
+//    @DeleteMapping("/{member_id}")
+//    public void deletePost(@PathVariable Long member) {
+//        postService.deletePost(member);
+//    }
+
+//    @DeleteMapping("/postDelete/{postNo}")
+//    public String deletePost(@PathVariable Long postNo) {
+//
+//        postService.deletePost(postNo);
+//        return "redirect:/";
+//
+//
+//    }
 
 
 }
