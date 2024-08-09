@@ -80,7 +80,7 @@ public class MemberService {
         }
 
         if (!signupDTO.getFrontPhone().isEmpty() && !signupDTO.getBackPhone().isEmpty()) {
-            builder.phone("010-" + signupDTO.getFrontPhone() + signupDTO.getBackPhone());
+            builder.phone("010-" + signupDTO.getFrontPhone() + '-' + signupDTO.getBackPhone());
         }
 
         if (signupDTO.getBirthday() != null) {
