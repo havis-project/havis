@@ -29,6 +29,7 @@
         }
 
         aside {
+            user-select: none;
             background-color: aquamarine;
             float: left;
             height: 90%;
@@ -65,6 +66,14 @@
             padding-bottom: 40px;
             align-items: end;
         }
+
+        .logout {
+            margin: 15px;
+        }
+
+        #mypage {
+            margin: 15px;
+        }
     </style>
 </head>
 
@@ -76,9 +85,9 @@
 
 <body>
 <aside>
-    <button onclick="location.href='/member/mypage'">마이페이지</button>
-    <form th:action="@{/auth/logout}" method="post">
-        <button>로그아웃</button>
+    <span id="mypage" onclick="location.href='/member/mypage'">❤마이페이지</span>
+    <form  class="logout" th:action="@{/auth/logout}" method="post">
+        <span>💘로그아웃</span>
     </form>
 </aside>
 
