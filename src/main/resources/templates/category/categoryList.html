@@ -2,21 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CategoryList</title>
+    <title>Title</title>
 </head>
 <body>
-<table>
-    <tr>
-        <th>카테고리번호</th>
-        <th>카테고리이름</th>
 
-    </tr>
-    <tr th:each="category : ${categoryList}">
-        <td th:text="${ category.categoryNo }"></td>
-        <td th:text="${ category.categoryName }"></td>
+<div th:if="${category != null}">
+    <h2>카테고리 번호: <span th:text="${category.categoryNo}"></span></h2>
+    <p>카테고리 이름: <span th:text="${category.categoryName}"></span></p>
+</div>
 
-    </tr>
-</table>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>카테고리 번호</th>
+            <th>카테고리 이름</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="content : ${categoryList.content}">
+            <td th:text="${content.categoryNo}"></td>
+            <td th:text="${content.categoryName}"></td>
+        </tr>
+        </tbody>
+    </table>
+
 <div id="paging">
 
     <button th:onclick="'location.href=\'/category/list?page=' + ${ paging.startPage } + '\''"><<</button>
@@ -42,6 +52,11 @@
         >>
     </button>
 
-</div>
+    <form id="searchForm" action="/category/categoryList" method="get">
+        <label for="categoryNo">카테고리 번호 :</label>
+        <input type="number" id="categoryNo" name="categoryNo" required />
+        <button type="submit">조회하기</button>
+    </form>
+
 </body>
 </html>
