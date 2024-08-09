@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -78,6 +79,18 @@ public class CategoryController {
     public String modifyCategoryName(CategoryDTO modifyCategoryName) {
 
         categoryService.modifyCategoryName(modifyCategoryName);
+
+        return "redirect:/category/categoryList";
+    }
+
+    @GetMapping("/delete")
+    public void deletePage(){
+    }
+
+    @PostMapping("/delete")
+    public String deleteCategoryName(@RequestParam Integer categoryNo) {
+
+        categoryService.deleteCategoryName(categoryNo);
 
         return "redirect:/category/categoryList";
     }
