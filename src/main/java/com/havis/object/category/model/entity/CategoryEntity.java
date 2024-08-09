@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @ToString
-@Builder
+@Builder(toBuilder = true)
 public class CategoryEntity extends BaseTimeEntity {
 
     @Id
@@ -35,5 +35,11 @@ public class CategoryEntity extends BaseTimeEntity {
     @Column(name = "category_hide_date")
     @Comment("카테고리숨김일시")
     private LocalDateTime categoryHideDate;
+
+
+    // 카테고리명을 수정하는 메서드
+    public void changeName(String newName) {
+        this.categoryName = newName;
+    }
 
 }
