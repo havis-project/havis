@@ -71,4 +71,9 @@ public class CategoryService {
 
         categoryRepository.save(foundCategoryName);
     }
+
+    public void deleteCategoryName(Integer categoryNo) {
+
+        categoryRepository.deleteById(categoryNo);
+    }
 }
