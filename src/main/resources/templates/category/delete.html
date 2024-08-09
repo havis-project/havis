@@ -6,16 +6,13 @@
 </head>
 <body>
 <table>
-    <tr>
-        <th>번호</th>
-        <th>카테고리명</th>
 
-    </tr>
-    <tr>
-        <td th:text="${ category.categoryNo }"></td>
-        <td th:text="${ category.categoryName }"></td>
+    <form action="/category/delete" method="post">
+        <label>삭제할 카테고리 번호 : </label>
+        <input type="number" name="categoryNo"> <br>
+        <input type="submit" value="전송">
+    </form>
 
-    </tr>
 </table>
 </body>
 </html>

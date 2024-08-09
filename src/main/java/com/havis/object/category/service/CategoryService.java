@@ -72,6 +72,7 @@ public class CategoryService {
         categoryRepository.save(foundCategoryName);
     }
 
+    @Transactional
     public void deleteCategoryName(Integer categoryNo) {
 
         categoryRepository.deleteById(categoryNo);
