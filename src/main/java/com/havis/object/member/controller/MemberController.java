@@ -5,10 +5,11 @@ import com.havis.object.member.model.entity.MemberEntity;
 import com.havis.object.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,12 +35,10 @@ public class MemberController {
 
     // 마이페이지로 이동
     @GetMapping("/mypage")
-    public String getMemberInfo(Model model) {
-
-        MemberEntity memberEntity = memberService.getCurrentUser();
-
-        model.addAttribute("member", memberEntity);
-
+    public String getMemberInfo(@AuthenticationPrincipal UserDetails user, Model model) {
+        String userId = user.getUsername(); // 현재 로그인되어있는 유저 아이디 가져오기
+        MemberEntity member = memberService.findMemberById(userId); // 아이디로 엔티티 찾아옴
+        model.addAttribute("member", member); // model에 가져온 엔티티 담아서 넘겨주기
         return "member/mypage";
     }
 }

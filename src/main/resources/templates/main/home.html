@@ -15,7 +15,7 @@
 
         header {
             user-select: none;
-            background-color: indianred;
+            background: none;
             height: 10vh;
             display: flex;
             flex-direction: row;
@@ -24,7 +24,7 @@
         }
 
         body {
-            background-color: darkgray;
+            background: none;
             height: 100vh;
         }
 
@@ -77,6 +77,9 @@
 <body>
 <aside>
     <button onclick="location.href='/member/mypage'">마이페이지</button>
+    <form th:action="@{/auth/logout}" method="post">
+        <button>로그아웃</button>
+    </form>
 </aside>
 
 <section>

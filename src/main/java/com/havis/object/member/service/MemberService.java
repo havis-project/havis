@@ -6,12 +6,10 @@ import com.havis.object.member.model.entity.RoleType;
 import com.havis.object.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -52,14 +50,9 @@ public class MemberService {
         }
     }
 
-    public MemberEntity getCurrentUser() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            String memberId = ((UserDetails) principal).getUsername();
-            Optional<MemberEntity> member = memberRepository.findMemberByMemberId(memberId);
-            return member.orElse(null);
-        } else {
-            return null;
-        }
+    public MemberEntity findMemberById(String userId) {
+        MemberEntity member = memberRepository.findMemberByMemberId(userId) // 로그인 되어있는 id로 회원정보 가져오기
+                .orElseThrow(() -> new NoSuchElementException("회원정보를 찾을 수 없습니다.")); // 실패할 시 오류메세지 반환
+        return member;
     }
 }
