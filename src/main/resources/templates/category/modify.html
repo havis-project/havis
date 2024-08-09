@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/category/modify" method="post">
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>카테고리명</th>
+        </tr>
+        <tr>
+            <!--  테이블의 한 행을 표시 -->
+            <td th:text="${ category.categoryNo }"></td>
+            <!--  입력필드를 사용자한테서 숨기고, menuCode 값을 포함하여 서버로 전송  -->
+            <input type="hidden" th:value="${category.categoryNo}" name="categoryNo">
+            <!--  텍스트 입력 필드를 포함해서 menuName 값을 보여주고, 수정 할 수 있게 해줌 -->
+            <td><input type="text" name="categoryName" th:value="${ category.categoryName }"></td>
+
+
+            <td th:text="${category.categoryNo}"></td>
+
+        </tr>
+    </table>
+    <button type="submit">수정</button>
+</form>
+</body>
+</html>
