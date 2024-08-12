@@ -11,30 +11,39 @@
             margin: 0;
             padding: 0;
             white-space: nowrap;
+
             font-family: "Jua", sans-serif;
+            font-size: 30px;
         }
 
         body {
             background-image: url('/images/pastelBackground.jpg');
             background-repeat: no-repeat;
             background-size: cover;
+
             height: 100vh;
             width: 100vw;
+
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+        }
+
+        header {
+            font-size: 60px;
         }
 
         .container {
             height: 700px;
             width: 700px;
 
-            font-size: 25px;
-
             position: absolute;
+
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
+            align-items: center;
             text-align: center;
 
             border-radius: 20px;
@@ -44,32 +53,55 @@
         }
 
         div {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 90px;
-            font-size: 60px;
+        input {
+            text-align: center;
+            background: none;
+
+            outline: none;
+
+            width: 300px;
+            height: 40px;
+
+            border: 1px solid black;
+            border-radius: 10px;
+
+            font-size: 20px;
         }
 
-        .button {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            height: 60px;
+        .phone input {
+            width: 80px;
         }
 
-        .edit {
+        .birthday input {
+            width: 250px;
+        }
+
+        select {
+            text-align: center;
+            background: none;
+
+            height: 40px;
+
+            border-radius: 10px;
+
+            font-size: 20px;
+        }
+
+        option {
+            font-size: 20px;
+        }
+
+        button {
             border-radius: 10px;
             display: inline-block;
 
             background: none;
 
-            width: 100px;
-            height: 40px;
+            width: 150px;
+            height: 60px;
 
             cursor: pointer;
 
@@ -78,37 +110,20 @@
         }
 
         .edit:hover {
-            background-color: aqua;
-        }
-
-        .edit:active {
-            position: relative;
-            top: 1px;
-        }
-
-        .back {
-            border-radius: 10px;
-            display: inline-block;
-
-            background: none;
-
-            width: 100px;
-            height: 40px;
-
-            cursor: pointer;
-
-            font-family: "Jua", sans-serif;
-            font-size: 22px;
+            background-color: lightgreen;
         }
 
         .back:hover {
-            background-color: darkred;
-            color: whitesmoke;
+            background-color: lightcoral;
         }
 
-        .back:active {
+        button:active {
             position: relative;
             top: 1px;
+        }
+
+        .buttonSection {
+            margin-top: 30px;
         }
     </style>
     <script src="/js/location.js"></script>
@@ -117,7 +132,7 @@
 <div class="container">
     <header>내 정보 수정하기</header>
     <form name="memberInfoUpdate" th:action="@{/member/edit}" th:method="post">
-        <div class="password">
+        <div>
             <label class="title password">비밀번호 : </label>
             <input type="text" id="password" name="password">
         </div>
@@ -143,33 +158,32 @@
         </div>
 
         <div class="phone">
-            <label class="title phone">휴대폰 번호 : </label>
+            <label>휴대폰 번호 : </label>
             <span>010 - </span>
-            <input class="phone input" type="text" id="frontPhone" name="frontPhone" maxlength="4">
+            <input type="text" id="frontPhone" name="frontPhone" maxlength="4">
             <span> - </span>
-            <input class="phone input" type="text" id="backPhone" name="backPhone" maxlength="4">
+            <input type="text" id="backPhone" name="backPhone" maxlength="4">
         </div>
 
         <div class="birthday">
-            <label class="title birthday">생년월일 </label>
-            <input class="birthday input" type="date" id="birthday" name="birthday">
+            <label class="title birthday">생년월일 : </label>
+            <input type="date" id="birthday" name="birthday">
         </div>
 
         <div class="location">
-            <label class="title loction">활동지(선택사항) </label>
+            <label class="title loction">활동지(선택사항) : </label>
             <select id="sido" name="sido">
             </select>
             <select id="sigugun" name="sigugun">
-                <option value="none"></option>
             </select>
         </div>
 
+        <div class="buttonSection">
+        <button class="back mypage" type="button" onclick="location.href='/member/mypage'">뒤로가기</button>
         <button class="edit" type="submit">수정하기</button>
+        <button class="back home" type="button" onclick="location.href='/main/home'">메인으로</button>
+        </div>
     </form>
-
-    <div class="button">
-        <button class="back" onclick="history.back()">돌아가기</button>
-    </div>
 </div>
 </body>
 </html>

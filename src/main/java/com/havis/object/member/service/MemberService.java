@@ -28,7 +28,7 @@ public class MemberService {
                 .nickname(signupDTO.getNickname())
                 .email(signupDTO.getEmail())
                 .name(signupDTO.getName())
-                .phone("010-" + signupDTO.getFrontPhone() + "-" + signupDTO.getBackPhone())
+                .phone(signupDTO.getPhone())
                 .birthday(signupDTO.getBirthday())
                 .location(locationCheck(signupDTO))
                 .build();
@@ -44,7 +44,7 @@ public class MemberService {
         String sigugun = signupDTO.getSigugun();
 
         if (sido.equals("시/도 선택")) {
-            return null;
+            return "선택안함";
         } else if (sigugun.equals("시/구/군 선택")) {
             return sido;
         } else {
@@ -80,8 +80,8 @@ public class MemberService {
             builder.name(signupDTO.getName());
         }
 
-        if (!signupDTO.getFrontPhone().isEmpty() && !signupDTO.getBackPhone().isEmpty()) {
-            builder.phone("010-" + signupDTO.getFrontPhone() + '-' + signupDTO.getBackPhone());
+        if (!signupDTO.getPhone().isEmpty()) {
+            builder.phone(signupDTO.getPhone());
         }
 
         if (signupDTO.getBirthday() != null) {
