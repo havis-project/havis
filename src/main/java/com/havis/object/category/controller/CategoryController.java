@@ -7,15 +7,11 @@ import com.havis.object.category.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collections;
 
 @Controller
 @RequestMapping("/category")
@@ -78,13 +74,27 @@ public class CategoryController {
     @PostMapping("/modify")
     public String modifyCategoryName(CategoryDTO modifyCategoryName) {
 
+        log.info("modifyCategoryName : {}", modifyCategoryName);
         categoryService.modifyCategoryName(modifyCategoryName);
 
         return "redirect:/category/categoryList";
     }
 
-    @GetMapping("/delete")
-    public void deletePage(){
+    @GetMapping("/delete/{categoryNo}")
+    public String deletePage(@PathVariable int categoryNo, @PageableDefault Pageable pageable, Model model){
+        CategoryDTO category = categoryService.findCategoryByNo(categoryNo);
+
+        // categoryNo에 해당하는 번호를 지우기
+        categoryService.deleteCategoryName(categoryNo);
+
+        Page<CategoryDTO> categoryList;
+
+        categoryList = categoryService.findAllCategory(pageable);
+        PagingButtonInfo paging = Pagenation.getPagingButtonInfo(categoryList);
+        model.addAttribute("paging", paging);
+        model.addAttribute("categoryList", categoryList);
+        return "category/categoryList";
+
     }
 
     @PostMapping("/delete")
