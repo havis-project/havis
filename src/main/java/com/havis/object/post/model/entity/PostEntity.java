@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
+@Setter
 @ToString
 @Builder
 public class PostEntity extends BaseTimeEntity {
@@ -67,4 +68,10 @@ public class PostEntity extends BaseTimeEntity {
 
     }
 
+    public void update(String postTitle, String postText) {
+
+        this.postTitle = postTitle;
+        this.postText = postText;
+
+    }
 }

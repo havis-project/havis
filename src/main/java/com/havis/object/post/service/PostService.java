@@ -1,5 +1,7 @@
 package com.havis.object.post.service;
 
+import com.havis.object.category.model.dto.CategoryDTO;
+import com.havis.object.category.model.entity.CategoryEntity;
 import com.havis.object.post.model.dto.PostRegisterDTO;
 import com.havis.object.post.model.entity.PostEntity;
 import com.havis.object.post.repository.PostRepository;
@@ -49,30 +51,17 @@ public class PostService {
 
     }
 
-//    public PostEntity findPostById(String postTitle) {
-//
-//        PostEntity postEntity = postRepository.findById(Long.valueOf(postTitle))
-//                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
-//
-//        return postEntity.builder().postTitle(postEntity.getPostTitle()).build();
-//    }
+    // 단건 조회
+    public PostRegisterDTO findPostByNo(int postNo) {
 
-//    @Transactional
-//    public boolean updatePost(PostRegisterDTO postRegisterDTO){
-//
-//        PostEntity postEntity = postRepository.findById(postRegisterDTO.getPostTitle()).orElseThrow(RuntimeException::new);
-//        postEntity.updatePostEntity(postRegisterDTO.getPostText());
-////                ,postRegisterDTO.getLand_number()
-////                ,postRegisterDTO.getRoad_number()
-////                ,postRegisterDTO.getCategory());
-//
-//        try{
-//            postRepository.save(postEntity);
-//        }catch (Exception e){
-//            return false;
-//        }
-//        return true;
-//    };
+        PostEntity postEntity = postRepository.findById(postNo)
+                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
+
+        return modelMapper.map(postEntity, PostRegisterDTO.class);
+
+    }
+
+
 
 
     // 삭제
@@ -80,6 +69,25 @@ public class PostService {
     public void deletePost(Integer postNo) {
 
             postRepository.deleteById(postNo);
+
+
+    }
+
+    // 수정
+    @Transactional
+    public void updatePost(Integer postNo, PostRegisterDTO postRegisterDTO){
+
+        PostEntity postEntity = postRepository.findById(postNo)
+                .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id = "+postNo));
+
+        log.info("service postRegisterDTO postTitle: {}", postRegisterDTO.getPostTitle());
+        log.info("service postRegisterDTO postText: {}", postRegisterDTO.getPostText());
+        postEntity.setPostTitle(postRegisterDTO.getPostTitle());
+        postEntity.setPostText(postRegisterDTO.getPostText());
+
+
+        postRepository.save(postEntity);
+
 
 
     }
