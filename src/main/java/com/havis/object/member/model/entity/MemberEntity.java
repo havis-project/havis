@@ -38,7 +38,8 @@ public class MemberEntity extends BaseTimeEntity {
 
     @Column(name = "level", nullable = false)
     @Comment("레벨")
-    private int level;
+    @Builder.Default
+    private int level = 1;
 
     @Column(name = "name", nullable = false)
     @Comment("회원명")
@@ -79,5 +80,6 @@ public class MemberEntity extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     @Comment("역할")
-    private RoleType role;
+    @Builder.Default
+    private RoleType role = RoleType.valueOf("USER");
 }

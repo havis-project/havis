@@ -2,8 +2,8 @@ package com.havis.object.member.service;
 
 import com.havis.object.member.model.dto.SignupDTO;
 import com.havis.object.member.model.entity.MemberEntity;
-import com.havis.object.member.model.entity.RoleType;
 import com.havis.object.member.repository.MemberRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +14,7 @@ import java.util.NoSuchElementException;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -30,7 +31,7 @@ public class MemberService {
                 .phone("010-" + signupDTO.getFrontPhone() + "-" + signupDTO.getBackPhone())
                 .birthday(signupDTO.getBirthday())
                 .location(locationCheck(signupDTO))
-                .level(1).role(RoleType.valueOf("USER")).build();
+                .build();
 
         log.info("[회원가입] 회원번호 : {}, id : {}", member.getMemberNo(), member.getMemberId());
 
