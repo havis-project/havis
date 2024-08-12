@@ -37,9 +37,7 @@ public class CategoryEntity extends BaseTimeEntity {
     private LocalDateTime categoryHideDate;
 
 
-    // 카테고리명을 수정하는 메서드
     public void changeName(String newName) {
         this.categoryName = newName;
     }
-
 }
