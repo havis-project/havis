@@ -3,14 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>postDelete</title>
+
+    <style>
+
+        body {
+            background-image: url('/images/pastelBackground.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            height: 100vh;
+            width: 100vw;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            button{
+
+            }
+        }
+
+        .havis {
+            font-family: "Shrikhand", serif;
+            font-size: 90px;
+        }
+
+        .since {
+            font-family: "Gochi Hand", cursive;
+            padding-bottom: 40px;
+            align-items: end;
+        }
+
+        .postDelete {
+
+            float: left;
+
+        }
+
+
+
+
+
+        </style>
+
 </head>
+<header onclick="location.href='/main/home'" class="kid">
+    <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
+    <span class="header havis">HAVIS</span>
+    <span class="header since">since2024</span>
+</header>
+
 <body>
 
-<h1>메뉴 삭제</h1>
-
-<form action="/post/postDelete" method="post">
+<form action="/post/postDelete" class="postDelete" method="post">
     <label>삭제할 게시글의 번호 : </label>
-    <input type="number" min="1" name="postNo"> <br>
+    <input type="number" min="1" name="postNo">
     <input type="submit" value="전송">
 </form>
 

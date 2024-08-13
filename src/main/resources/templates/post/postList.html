@@ -12,7 +12,7 @@
             border-top: none;
         }
         .header {
-            background-color: rgb(218, 231, 255);
+            /*background-color: rgb(218, 231, 255);*/
             text-align: center;
         }
         .table td, .table th {
@@ -52,7 +52,64 @@
             padding-left: 10px;
             background-color: rgb(68, 136, 244);
         }
+
+        body {
+            background-image: url('/images/pastelBackground.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            height: 100vh;
+            width: 100vw;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            button{
+
+            }
+        }
+
+
+        .havis {
+            font-family: "Shrikhand", serif;
+            font-size: 90px;
+        }
+
+        .since {
+            font-family: "Gochi Hand", cursive;
+            padding-bottom: 40px;
+            align-items: end;
+        }
+
+        .postSearch {
+            position: fixed;
+            bottom: 300px;
+        }
+
+
+        .table {
+
+
+
+        }
+
+        .kid {
+
+            position: fixed;
+            top: 0px;
+
+        }
+
+
     </style>
+
+    <header onclick="location.href='/main/home'" class="kid">
+        <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
+        <span class="header havis">HAVIS</span>
+        <span class="header since">since2024</span>
+    </header>
 
 </head>
 <body>
@@ -76,34 +133,9 @@
 
     </table>
 
-
-
-
-
-<!--&lt;!&ndash;    <script>&ndash;&gt;-->
-<!--&lt;!&ndash;        function searchPost() {&ndash;&gt;-->
-<!--&lt;!&ndash;            const postNo = document.getElementById('postNo').value;&ndash;&gt;-->
-<!--&lt;!&ndash;            if (postNo) {&ndash;&gt;-->
-<!--&lt;!&ndash;                window.location.href = `/post/${postNo}`;&ndash;&gt;-->
-<!--&lt;!&ndash;            } else {&ndash;&gt;-->
-<!--&lt;!&ndash;                alert('게시글 번호를 입력하세요')&ndash;&gt;-->
-<!--&lt;!&ndash;            }&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-<!--&lt;!&ndash;    </script>&ndash;&gt;-->
-
-<!--    <div class="block4">-->
-<!--        <form id="searchForm" action="/category/categoryList" method="get">-->
-<!--            <label for="categoryNo"></label>-->
-<!--            <input type="number" id="categoryNo" name="categoryNo" required/>-->
-<!--            <button type="submit">카테고리 검색</button>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--    -->
-
-
 </form>
 
-<div >
+<div class="postSearch">
     <form id="searchForm" action="postList" method="get">
         <label for="postNo">게시물 번호</label>
         <input type="number" id="postNo" name="postNo" required />
@@ -112,32 +144,32 @@
 </div>
 
 
-<div id="paging">
+<!--<div id="paging">-->
 
-    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.startPage } + '\''"><<</button>
-    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.currentPage - 1} + '\''"
-            th:disabled="${ postList.first }"><
-    </button>
-
-
-    <th:block th:each="page: ${ #numbers.sequence(paging.startPage, paging.endPage)}">
-        <button th:onclick="'location.href=\'/post/list?page=' + ${page} + '\''"
-                th:text="${page}"
-                th:disabled="${ paging.currentPage eq page }">
-        </button>
-    </th:block>
+<!--    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.startPage } + '\''"><<</button>-->
+<!--    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.currentPage - 1} + '\''"-->
+<!--            th:disabled="${ postList.first }"><-->
+<!--    </button>-->
 
 
-    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.currentPage + 1} + '\''"
-            th:disabled="${ postList.last }">
-        >
-    </button>
+<!--    <th:block th:each="page: ${ #numbers.sequence(paging.startPage, paging.endPage)}">-->
+<!--        <button th:onclick="'location.href=\'/post/list?page=' + ${page} + '\''"-->
+<!--                th:text="${page}"-->
+<!--                th:disabled="${ paging.currentPage eq page }">-->
+<!--        </button>-->
+<!--    </th:block>-->
 
-    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.endPage } + '\''">
-        >>
-    </button>
 
-</div>
+<!--    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.currentPage + 1} + '\''"-->
+<!--            th:disabled="${ postList.last }">-->
+<!--        >-->
+<!--    </button>-->
+
+<!--    <button th:onclick="'location.href=\'/post/list?page=' + ${ paging.endPage } + '\''">-->
+<!--        >>-->
+<!--    </button>-->
+
+<!--</div>-->
 
 </body>
 </html>
