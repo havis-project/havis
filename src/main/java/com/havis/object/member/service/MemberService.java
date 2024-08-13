@@ -45,7 +45,7 @@ public class MemberService {
 
         if (sido.equals("시/도 선택")) {
             return "선택안함";
-        } else if (sigugun.equals("시/구/군 선택")) {
+        } else if (sigugun.equals("시/구/군 선택") || sigugun.isEmpty()) {
             return sido;
         } else {
             return sido + " " + sigugun;

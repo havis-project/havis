@@ -76,28 +76,41 @@
 
     </table>
 
-    <div >
-        <a th:href="@{/post/postList}">게시글 단일 조회</a>
 
-        <form id="searchForm">
-            <label for="postNo">게시물 번호</label>
-            <input type="text" id="postNo" name="postNo" required />
-            <button type="button" onclick="searchPost()" >조회하기</button>
-        </form>
-    </div>
-    <script>
-        function searchPost() {
-            const postNo = document.getElementById('postNo').value;
-            if (postNo) {
-                window.location.href = `/post/${postNo}`;
-            } else {
-                alert('게시글 번호를 입력하세요')
-            }
-        }
-    </script>
+
+
+
+<!--&lt;!&ndash;    <script>&ndash;&gt;-->
+<!--&lt;!&ndash;        function searchPost() {&ndash;&gt;-->
+<!--&lt;!&ndash;            const postNo = document.getElementById('postNo').value;&ndash;&gt;-->
+<!--&lt;!&ndash;            if (postNo) {&ndash;&gt;-->
+<!--&lt;!&ndash;                window.location.href = `/post/${postNo}`;&ndash;&gt;-->
+<!--&lt;!&ndash;            } else {&ndash;&gt;-->
+<!--&lt;!&ndash;                alert('게시글 번호를 입력하세요')&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </script>&ndash;&gt;-->
+
+<!--    <div class="block4">-->
+<!--        <form id="searchForm" action="/category/categoryList" method="get">-->
+<!--            <label for="categoryNo"></label>-->
+<!--            <input type="number" id="categoryNo" name="categoryNo" required/>-->
+<!--            <button type="submit">카테고리 검색</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    -->
 
 
 </form>
+
+<div >
+    <form id="searchForm" action="postList" method="get">
+        <label for="postNo">게시물 번호</label>
+        <input type="number" id="postNo" name="postNo" required />
+        <button type="submit" >조회하기</button>
+    </form>
+</div>
+
 
 <div id="paging">
 

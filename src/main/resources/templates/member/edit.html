@@ -71,10 +71,6 @@
             font-size: 20px;
         }
 
-        .phone input {
-            width: 80px;
-        }
-
         .birthday input {
             width: 250px;
         }
@@ -127,6 +123,54 @@
         }
     </style>
     <script src="/js/location.js"></script>
+    <script>
+
+        function validateForm() {
+            const password = document.getElementById("password").value;
+            const pwCheck = document.getElementById("pwCheck").value;
+            const nickname = document.getElementById("nickname").value;
+            const phone = document.getElementById("phone").value;
+
+            const pwPattern = /^[a-zA-Z0-9!@#$%^&*()-_]+$/;
+            const nicknamePattern = /^[a-zA-Z0-9가-힇]+$/;
+            const phonePattern = /^[0-9]+$/;
+
+            // 유효성 검사
+            if (!pwPattern.test(password)) {
+                alert("비밀번호에 사용할 수 없는 문자가 포함되어 있습니다!\n" +
+                    "공백 없이 [영어, 숫자, 사용 가능한 특수기호]로만 구성되어야 합니다.\n" +
+                    "사용 가능한 특수기호 : ! @ # $ % ^ & * ( ) _ -")
+                return false;
+            } else if (password.length < 8 || password.length > 20) {
+                alert("비밀번호의 길이가 올바르지 않습니다!\n" +
+                    "비밀번호는 [최소 8자, 최대 20자]로 구성되어야 합니다.")
+                return false;
+            }
+
+            if (pwCheck !== password) {
+                alert("비밀번호 확인이 일치하지 않습니다!");
+                return false;
+            }
+
+            if (!nicknamePattern.test(nickname)) {
+                alert("닉네임에 사용할 수 없는 문자가 포함되어 있습니다!\n" +
+                    "공백 없이 [영어, 숫자, 한글(자음, 모음 단독 사용 불가)]로 구성되어야 합니다.")
+                return false;
+            } else if (nickname.length > 10) {
+                alert("닉네임의 길이가 너무 깁니다!\n" +
+                    "최대 [10자]까지 설정 가능합니다.")
+                return false;
+            }
+
+
+            if (!phonePattern.test(phone)) {
+                alert("휴대폰 번호의 양식이 맞지 않습니다!\n" +
+                    "('-'는 제외하고 숫자로만 구성되어야 합니다.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 <div class="container">
@@ -134,35 +178,38 @@
     <form name="memberInfoUpdate" th:action="@{/member/edit}" th:method="post">
         <div>
             <label class="title password">비밀번호 : </label>
-            <input type="text" id="password" name="password">
+            <input type="text" id="password" name="password" placeholder="변경하실 [비밀번호]를 입력하세요"
+                   onfocus="this.placeholder=''" onblur="this.placeholder='변경하실 [비밀번호]를 입력하세요'">
         </div>
 
         <div class="pwCheck">
             <label class="title pwCheck">비밀번호 확인 : </label>
-            <input type="password" id="pwCheck" name="pwCheck">
+            <input type="password" id="pwCheck" name="pwCheck" placeholder="[비밀번호]를 한번 더 입력하세요"
+                   onfocus="this.placeholder=''" onblur="this.placeholder='[비밀번호]를 한번 더 입력하세요'">
         </div>
 
         <div class="nickname">
             <label class="title nickname">닉네임 : </label>
-            <input type="text" id="nickname" name="nickname" th:placeholder="${member.nickname}">
+            <input type="text" id="nickname" name="nickname" th:placeholder="${member.nickname}"
+                   onfocus="this.placeholder=''" onblur="this.placeholder='변경하실 [닉네임]을 입력하세요'">
         </div>
 
         <div class="email">
             <label class="title email">이메일 : </label>
-            <input type="email" id="email" name="email" th:placeholder="${member.email}">
+            <input type="email" id="email" name="email" th:placeholder="${member.email}"
+                   onfocus="this.placeholder=''" onblur="this.placeholder='변경하실 [이메일]을 입력하세요'">
         </div>
 
         <div class="name">
             <label class="title name">이름 : </label>
-            <input type="text" id="name" name="name" th:placeholder="${member.name}">
+            <input type="text" id="name" name="name" th:placeholder="${member.name}"
+                   onfocus="this.placeholder=''" onblur="this.placeholder='변경하실 [본명]을 입력하세요'">
         </div>
 
         <div class="phone">
-            <label>휴대폰 번호 : </label>
-            <span>010 - </span>
-            <input type="text" id="frontPhone" name="frontPhone" maxlength="4">
-            <span> - </span>
-            <input type="text" id="backPhone" name="backPhone" maxlength="4">
+            <label for="phone">휴대폰 번호('-' 제외) : </label>
+            <input type="text" id="phone" name="phone" maxlength="11" th:placeholder="${member.phone}"
+                   onfocus="this.placeholder=''" onblur="this.placeholder='변경하실 [휴대폰 번호]를 입력하세요'">
         </div>
 
         <div class="birthday">
@@ -179,9 +226,9 @@
         </div>
 
         <div class="buttonSection">
-        <button class="back mypage" type="button" onclick="location.href='/member/mypage'">뒤로가기</button>
-        <button class="edit" type="submit">수정하기</button>
-        <button class="back home" type="button" onclick="location.href='/main/home'">메인으로</button>
+            <button class="back mypage" type="button" onclick="location.href='/member/mypage'">뒤로가기</button>
+            <button class="edit" type="submit">수정하기</button>
+            <button class="back home" type="button" onclick="location.href='/main/home'">메인으로</button>
         </div>
     </form>
 </div>

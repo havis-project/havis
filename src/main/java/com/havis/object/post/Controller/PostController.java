@@ -84,11 +84,16 @@ public class PostController {
 
     // 전체 조회, 단건 조회
     @GetMapping("/postList")
-    public String findAllPost(@PageableDefault Pageable pageable, Model model, @RequestParam(name="postNo", required = false) Integer postNo) {
+    public String findAllPost(
+            @RequestParam(name="postNo", required = false) Integer postNo,
+            @PageableDefault Pageable pageable,
+            Model model) {
 
         log.info("pageable = {}", pageable);
 
-        Page<PostRegisterDTO> postList = postService.findAllPost(pageable);
+        Page<PostRegisterDTO> postList;
+
+        postList = postService.findAllPost(pageable);
 
         PagingButtonInfo paging = Pagenation.getPagingButtonInfo(postList);
 
@@ -98,7 +103,7 @@ public class PostController {
 
         if (postNo != null) {
             PostRegisterDTO postRegisterDTO = postService.findPostByNo(postNo);
-            model.addAttribute("postList", postNo);
+            model.addAttribute("postList", postRegisterDTO);
         }
 
 
