@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>postMain</title>
+</head>
+
+<style>
+
+
+     {
+        height: 700px;
+        width: 700px;
+
+        position: absolute;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.1); /* 요소를 반투명 처리 해준 후 */
+        backdrop-filter: blur(15px); /* 요소 뒤에서 효과 적용 */
+        box-shadow: 2px 7px 15px 8px rgb(0, 0, 0, 0.3); /* 그림자 적용 */
+    }
+
+    .postCreate {
+
+        text-align: center;
+        background-image: linear-gradient(to right, green, yellowgreen);
+        background-clip: text;
+        color: transparent;
+        font-size: 30px;
+
+
+
+
+
+    }
+
+     .postDelete {
+
+         text-align: center;
+         background-image: linear-gradient(to right, green, yellowgreen);
+         background-clip: text;
+         color: transparent;
+         font-size: 30px;
+
+
+
+
+
+     }
+
+     .postList {
+
+         text-align: center;
+         background-image: linear-gradient(to right, green, yellowgreen);
+         background-clip: text;
+         color: transparent;
+         font-size: 30px;
+
+
+
+
+
+     }
+
+     .postUpdate {
+
+         text-align: center;
+         background-image: linear-gradient(to right, green, yellowgreen);
+         background-clip: text;
+         color: transparent;
+         font-size: 30px;
+
+
+
+
+
+     }
+
+
+</style>
+
+<body>
+
+<div>
+    <a th:href="@{/post/postCreate}" class="postCreate">게시글 생성</a>
+</div>
+
+<div>
+    <a th:href="@{/post/postDelete}" class="postDelete">게시판 삭제</a>
+</div>
+
+<div>
+    <a th:href="@{/post/postList}" class="postList">게시판 목록</a>
+</div>
+
+<div>
+    <a th:href="@{/post/postUpdate}" class="postUpdate">게시판 수정</a>
+</div>
+
+
+
+</body>
+</html>
