@@ -3,19 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <title>postCreate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&family=Jua&display=swap"
+          rel="stylesheet">
+    <style>
+
+        body {
+            background-image: url('/images/pastelBackground.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            height: 100vh;
+            width: 100vw;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            button{
+
+            }
+        }
+
+        .havis {
+            font-family: "Shrikhand", serif;
+            font-size: 90px;
+        }
+
+        .since {
+            font-family: "Gochi Hand", cursive;
+            padding-bottom: 40px;
+            align-items: end;
+        }
+
+        .table{
+
+            position: absolute;
+            left:1000px;
+            top:1000px;
+
+        }
+
+        .postCreate{
+
+            float: left;
+
+        }
+
+
+
+
+
+
+    </style>
+
+
 </head>
+
+<header onclick="location.href='/main/home'">
+    <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
+    <span class="header havis">HAVIS</span>
+    <span class="header since">since2024</span>
+</header>
+
 <body>
 <form th:action="@{/post/postCreate}" th:method="post">
     <table class="table">
-        <tr><td colspan="2"><h2>게시판</h2></td></tr>
-        <tr class="header">
-            <td class="postNo">번호</td>
-            <td class="postTitle">제목</td>
-            <td class="postText">내용</td>
-            <td class="member">작성자</td>
-            <!--        <td class="postDate">작성날짜</td>-->
-        </tr>
-        <div>
+        <tr><td colspan="2"><h2>취미자랑게시판</h2></td></tr>
+<!--        <tr class="header">-->
+<!--            <td class="postNo">번호</td>-->
+<!--            <td class="postTitle">제목</td>-->
+<!--            <td class="postText">내용</td>-->
+<!--            <td class="member">작성자</td>-->
+<!--            &lt;!&ndash;        <td class="postDate">작성날짜</td>&ndash;&gt;-->
+<!--        </tr>-->
+        <div class="postCreate">
             <label>글 제목 : </label>
             <input type="text" name="postTitle" id="postTitle">
             <label>글 내용 : </label>
@@ -23,7 +87,11 @@
 <!--            <label>작성자 : </label>-->
 <!--            <input type="text" name="member" id="member">-->
         </div>
-        <button type="submit">글 작성</button>
+        <button type="submit">
+            글 작성
+
+
+        </button>
     </table>
     </form>
 </body>
