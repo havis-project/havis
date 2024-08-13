@@ -105,6 +105,12 @@
         }
 
         button:hover {
+            position: relative;
+            top: 1px;
+            right: 1px;
+        }
+
+        .register:hover {
             background-color: lightblue;
         }
 
@@ -112,10 +118,22 @@
             background-color: lightcoral;
         }
 
-        button:active {
+        .register:active {
+            background-color: lightblue;
+
             position: relative;
-            top: 1px;
+            top: 2px;
+            right: 2px;
         }
+
+        .back:active {
+            background-color: lightcoral;
+
+            position: relative;
+            top: 2px;
+            right: 2px;
+        }
+
     </style>
     <script src="/js/location.js"></script>
     <script>
@@ -208,7 +226,6 @@
                     return true;
         }
     </script>
-
 </head>
 
 <body>
@@ -272,8 +289,8 @@
         </div>
 
         <div class="buttonSection">
-            <button type="submit" onclick="return validateForm()">가입하기</button>
-            <button class="back" type="button" onclick="location.href='/'">안할래요</button>
+            <button  class="register" type="submit" onclick="return validateForm()">가입하기</button>
+            <button class="back" type="button" onclick="location.href='/auth/login'">안할래요</button>
         </div>
     </form>
 </div>
