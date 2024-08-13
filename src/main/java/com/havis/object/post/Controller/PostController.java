@@ -11,7 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,8 +31,6 @@ public class PostController {
         return "post/postCreate";
 
     }
-
-
 
     @PostMapping("/postCreate")
     public String post(PostRegisterDTO postRegisterDTO) {
@@ -58,7 +55,6 @@ public class PostController {
     public void postUpdate() {
     }
 
-
 //    @PostMapping("/postUpdate")
 //    public String updatePost(@RequestParam Integer postNo, @RequestBody PostRegisterDTO postRegisterDTO) {
 //
@@ -80,12 +76,10 @@ public class PostController {
         return new RedirectView("/post/postList");
     }
 
-
-
     // 전체 조회, 단건 조회
     @GetMapping("/postList")
     public String findAllPost(
-            @RequestParam(name="postNo", required = false) Integer postNo,
+            @RequestParam(name = "postNo", required = false) Integer postNo,
             @PageableDefault Pageable pageable,
             Model model) {
 
@@ -100,14 +94,16 @@ public class PostController {
         model.addAttribute("paging", paging);
         model.addAttribute("postList", postList);
 
-
         if (postNo != null) {
             PostRegisterDTO postRegisterDTO = postService.findPostByNo(postNo);
             model.addAttribute("postList", postRegisterDTO);
         }
 
-
         return "post/postList";
+    }
+
+    @GetMapping("/postMain")
+    public void postMain() {
     }
 
 //    // 상세 조회
@@ -120,7 +116,4 @@ public class PostController {
 //
 //        return "post/postDetail";
 //    }
-
-
-
 }
