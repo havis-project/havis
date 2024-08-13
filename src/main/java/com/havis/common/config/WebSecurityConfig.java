@@ -51,7 +51,7 @@ public class WebSecurityConfig {
         http.logout(logoutConfigurer -> {
             logoutConfigurer
                     .logoutUrl("/auth/logout")
-                    .logoutSuccessUrl("/");
+                    .logoutSuccessUrl("/auth/login");
         });
 
         return http.build();

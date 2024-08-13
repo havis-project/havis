@@ -2,39 +2,261 @@
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>WELCOME TO HAVIS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&family=Jua&display=swap"
+          rel="stylesheet">
+    <style>
+        * {
+            user-select: none;
+
+            margin: 0;
+            padding: 0;
+
+            white-space: nowrap;
+        }
+
+        .intro {
+            background-image: url('/images/pastelBackground.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            min-height: 100vh;
+            min-width: 100vw;
+
+            position: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            font-family: "Shrikhand", serif;
+            font-size: 100px;
+
+            animation-name: fade_out;
+            animation-duration: 1s;
+            animation-delay: 3.3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        .sentence {
+            position: absolute;
+        }
+
+        span {
+            opacity: 0;
+            transform: translateY(-0.25em);
+            display: inline-block;
+            animation: burst_in 3s cubic-bezier(0, 1.62, 1, 1.6);
+        }
+
+        .sentence span:nth-of-type(1) {
+            animation-delay: 0.03s;
+        }
+
+        .sentence span:nth-of-type(2) {
+            animation-delay: 0.06s;
+        }
+
+        .sentence span:nth-of-type(3) {
+            animation-delay: 0.09s;
+        }
+
+        .sentence span:nth-of-type(4) {
+            animation-delay: 0.12s;
+        }
+
+        .sentence span:nth-of-type(5) {
+            animation-delay: 0.15s;
+        }
+
+        .sentence span:nth-of-type(6) {
+            animation-delay: 0.18s;
+        }
+
+        .sentence span:nth-of-type(7) {
+            animation-delay: 0.21s;
+        }
+
+        .sentence span:nth-of-type(8) {
+            animation-delay: 0.24s;
+        }
+
+        .sentence span:nth-of-type(9) {
+            animation-delay: 0.27s;
+        }
+
+        .sentence span:nth-of-type(10) {
+            animation-delay: 0.3s;
+        }
+
+        .sentence span:nth-of-type(11) {
+            animation-delay: 0.33s;
+        }
+
+        .sentence span:nth-of-type(12) {
+            animation-delay: 0.36s;
+        }
+
+        .sentence span:nth-of-type(13) {
+            animation-delay: 0.39s;
+        }
+
+        .sentence span:nth-of-type(14) {
+            animation-delay: 0.42s;
+        }
+
+        .sentence span:nth-of-type(15) {
+            animation-delay: 0.45s;
+        }
+
+        .sentence span:nth-of-type(16) {
+            animation-delay: 0.48s;
+        }
+
+        .container {
+            background-image: url('/images/pastelBackground.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            min-height: 100vh;
+            min-width: 100vw;
+
+            position: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+
+            animation-name: fade_in;
+            animation-duration: 2s;
+            animation-delay: 3.5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+
+            pointer-events: none;
+        }
+
+        .container div {
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* 요소를 반투명 처리 해준 후 */
+            backdrop-filter: blur(15px); /* 요소 뒤에서 효과 적용 */
+            box-shadow: 2px 7px 15px 8px rgb(0, 0, 0, 0.3); /* 그림자 적용 */
+
+            width: 300px;
+            height: 450px;
+            margin: 40px;
+
+            font-family: "Jua", sans-serif;
+            font-size: 30px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            opacity: 0;
+            animation-name: fade_in;
+            animation-duration: 1s;
+            animation-delay: 5s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+
+            cursor: pointer;
+        }
+
+        .container div:hover {
+            position: relative;
+            top: 1px;
+            right: 1px;
+        }
+
+        .container div:active {
+            position: relative;
+            top: 2px;
+            right: 2px;
+        }
+
+        @keyframes burst_in {
+            25%,
+            80% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade_in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade_out {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        // fade_in 애니메이션이 완료된 후 pointer-events를 활성화
+        setTimeout(function() {
+            document.getElementById('container').style.pointerEvents = 'auto';
+        }, 5500);  // fade_in 애니메이션의 총 길이(5초) + 추가 0.5초 여유
+    </script>
 </head>
+
 <body>
+<div class="intro">
+    <div class="">
+        <img width="500" height="700" src="/images/haviskid.png" alt="haviskid">
+    </div>
 
-<h1>하비스 가장 첫 페이지입니다.</h1>
-
-<div>
-    <a th:href="@{/auth/login}">Login</a>
+    <div class="sentence">
+        <span>P</span>
+        <span>L</span>
+        <span>A</span>
+        <span>Y</span>
+        <span>!</span><br>
+        <span>H</span>
+        <span>O</span>
+        <span>B</span>
+        <span>B</span>
+        <span>Y</span>
+        <span>!</span><br>
+        <span style="color: red">H</span>
+        <span style="color: blue">A</span>
+        <span>V</span>
+        <span style="color: forestgreen">I</span>
+        <span style="color: #fafa00">S</span>
+    </div>
 </div>
 
-<div>
-    <a th:href="@{/member/register}">Register</a>
-</div>
+<div class="container" id="container">
+    <div class="login" onclick="location.href='/auth/login'">
+        <img id="loginIcon" src="images/login.png" alt="login">
+        <h6 id="loginText">또 놀러오셨군요!</h6>
+        <h1 id="loginTitle">로그인</h1>
+    </div>
 
-<div>
-    <a th:href="@{/category/categoryList}">CategoryList</a>
+    <div class="register" onclick="location.href='/member/register'">
+        <img id="registerIcon" src="images/register.png" alt="register">
+        <h6 id="registerText">하비스에 처음이신가요?</h6>
+        <h1 id="registerTitle">회원가입</h1>
+    </div>
 </div>
-
-<div>
-    <a th:href="@{/post/postCreate}">게시글 생성</a>
-</div>
-
-<div>
-    <a th:href="@{/post/postDelete}">게시판 삭제</a>
-</div>
-
-<div>
-    <a th:href="@{/post/postList}">게시판 목록</a>
-</div>
-
-<div>
-    <a th:href="@{/post/postUpdate}">게시판 수정</a>
-</div>
-
 </body>
 </html>

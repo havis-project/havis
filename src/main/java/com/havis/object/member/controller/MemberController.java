@@ -30,7 +30,7 @@ public class MemberController {
     @PostMapping("/register")
     public String register(SignupDTO signupDTO) {
         memberService.register(signupDTO);
-        return "redirect:/";
+        return "auth/login";
     }
 
     // 마이페이지로 이동
