@@ -2,8 +2,8 @@ package com.havis.object.member.service;
 
 import com.havis.object.member.model.dto.SignupDTO;
 import com.havis.object.member.model.entity.MemberEntity;
-import com.havis.object.member.model.entity.RoleType;
 import com.havis.object.member.repository.MemberRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +14,7 @@ import java.util.NoSuchElementException;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -27,10 +28,10 @@ public class MemberService {
                 .nickname(signupDTO.getNickname())
                 .email(signupDTO.getEmail())
                 .name(signupDTO.getName())
-                .phone("010-" + signupDTO.getFrontPhone() + "-" + signupDTO.getBackPhone())
+                .phone(signupDTO.getPhone())
                 .birthday(signupDTO.getBirthday())
                 .location(locationCheck(signupDTO))
-                .level(1).role(RoleType.valueOf("USER")).build();
+                .build();
 
         log.info("[회원가입] 회원번호 : {}, id : {}", member.getMemberNo(), member.getMemberId());
 
@@ -43,7 +44,7 @@ public class MemberService {
         String sigugun = signupDTO.getSigugun();
 
         if (sido.equals("시/도 선택")) {
-            return null;
+            return "선택안함";
         } else if (sigugun.equals("시/구/군 선택")) {
             return sido;
         } else {
@@ -79,8 +80,8 @@ public class MemberService {
             builder.name(signupDTO.getName());
         }
 
-        if (!signupDTO.getFrontPhone().isEmpty() && !signupDTO.getBackPhone().isEmpty()) {
-            builder.phone("010-" + signupDTO.getFrontPhone() + '-' + signupDTO.getBackPhone());
+        if (!signupDTO.getPhone().isEmpty()) {
+            builder.phone(signupDTO.getPhone());
         }
 
         if (signupDTO.getBirthday() != null) {

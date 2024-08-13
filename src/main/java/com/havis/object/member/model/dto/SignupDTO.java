@@ -22,8 +22,7 @@ public class SignupDTO {
 
     private String name;
 
-    private String frontPhone;
-    private String backPhone;
+    private String phone;
 
     private LocalDate birthday;
 
