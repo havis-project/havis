@@ -24,10 +24,10 @@ public class PostRegisterDTO {
     private MemberEntity member;
     private CategoryEntity category;
 
-//    public PostEntity toEntity() {
-//        return new PostEntity(postTitle, postText);
-//    }
-
+    public PostRegisterDTO(String postTitle, String postText) {
+        this.postTitle = postTitle;
+        this.postText = postText;
+    }
 
 
 }

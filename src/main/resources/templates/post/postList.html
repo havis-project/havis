@@ -64,7 +64,6 @@
             <th>제목</th>
             <th>내용</th>
             <th>작성자</th>
-            <!--        <td class="postDate">작성날짜</td>-->
         </tr>
         <tr th:each="post : ${postList}">
             <td th:text="${ post.postNo }"></td>
@@ -81,18 +80,18 @@
         <a th:href="@{/post/postList}">게시글 단일 조회</a>
 
         <form id="searchForm">
-            <label for="postTitle">게시물 제목</label>
-            <input type="text" id="postTitle" name="postTitle" required />
+            <label for="postNo">게시물 번호</label>
+            <input type="text" id="postNo" name="postNo" required />
             <button type="button" onclick="searchPost()" >조회하기</button>
         </form>
     </div>
     <script>
         function searchPost() {
-            const postTitle = document.getElementById('postTitle').value;
-            if (postTitle) {
-                window.location.href = `/post/${postTitle}`;
+            const postNo = document.getElementById('postNo').value;
+            if (postNo) {
+                window.location.href = `/post/${postNo}`;
             } else {
-                alert('게시글 제목을 입력하세요')
+                alert('게시글 번호를 입력하세요')
             }
         }
     </script>

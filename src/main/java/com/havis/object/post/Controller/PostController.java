@@ -4,21 +4,20 @@ package com.havis.object.post.Controller;
 import com.havis.common.Pagenation;
 import com.havis.common.PagingButtonInfo;
 import com.havis.object.post.model.dto.PostRegisterDTO;
-import com.havis.object.post.model.entity.PostEntity;
 import com.havis.object.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/post")
@@ -55,9 +54,37 @@ public class PostController {
         return "redirect:/post/postList";
     }
 
-    // 전체 조회
+    @GetMapping("/postUpdate")
+    public void postUpdate() {
+    }
+
+
+//    @PostMapping("/postUpdate")
+//    public String updatePost(@RequestParam Integer postNo, @RequestBody PostRegisterDTO postRegisterDTO) {
+//
+//        postService.updatePost(postNo, postRegisterDTO);
+//
+//        return "redirect:/post/postList";
+//    }
+
+    @PostMapping("/postUpdate")
+    public RedirectView updatePost(@RequestParam Integer postNo,
+                                   @RequestParam String postTitle,
+                                   @RequestParam String postText) {
+
+        log.info("postNo : {}", postNo);
+        log.info("postTitle = {}", postTitle);
+        log.info("postText = {}", postText);
+        PostRegisterDTO postRegisterDTO = new PostRegisterDTO(postTitle, postText);
+        postService.updatePost(postNo, postRegisterDTO);
+        return new RedirectView("/post/postList");
+    }
+
+
+
+    // 전체 조회, 단건 조회
     @GetMapping("/postList")
-    public String findAllPost(@PageableDefault Pageable pageable, Model model) {
+    public String findAllPost(@PageableDefault Pageable pageable, Model model, @RequestParam(name="postNo", required = false) Integer postNo) {
 
         log.info("pageable = {}", pageable);
 
@@ -67,6 +94,13 @@ public class PostController {
 
         model.addAttribute("paging", paging);
         model.addAttribute("postList", postList);
+
+
+        if (postNo != null) {
+            PostRegisterDTO postRegisterDTO = postService.findPostByNo(postNo);
+            model.addAttribute("postList", postNo);
+        }
+
 
         return "post/postList";
     }
@@ -82,35 +116,6 @@ public class PostController {
 //        return "post/postDetail";
 //    }
 
-
-//    // 수정
-//    @PutMapping("/postModify")
-//    public ResponseEntity<Boolean> updatePost(@RequestBody PostRegisterDTO postRegisterDTO){
-//        try{
-//            postService.updatePost(postRegisterDTO);
-//        }catch (Exception e){
-//            return ResponseEntity.ok(false);
-//        }
-//
-//        return ResponseEntity.ok(true);
-//    }
-
-
-
-
-//    @DeleteMapping("/{member_id}")
-//    public void deletePost(@PathVariable Long member) {
-//        postService.deletePost(member);
-//    }
-
-//    @DeleteMapping("/postDelete/{postNo}")
-//    public String deletePost(@PathVariable Long postNo) {
-//
-//        postService.deletePost(postNo);
-//        return "redirect:/";
-//
-//
-//    }
 
 
 }
