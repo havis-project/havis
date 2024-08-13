@@ -24,13 +24,13 @@ public class CategoryController {
 
     @GetMapping("/create")
     public String category() {
-        return "category/create";
+        return "category/categoryList";
     }
 
     @PostMapping("/create")
     public String category(CategoryDTO categoryDTO) {
         categoryService.createCategory(categoryDTO);
-        return "redirect:/category/create";
+        return "redirect:/category/categoryList";
     }
 
     @GetMapping("/categoryList")
