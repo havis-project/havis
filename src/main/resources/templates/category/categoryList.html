@@ -3,31 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&family=Jua&display=swap"
+          rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            white-space: nowrap;
+        }
+
+        header {
+            user-select: none;
+            background: none;
+
+            height: 10vh;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body {
+            background: none;
+
+            height: 100vh;
+        }
+
+        aside {
+            user-select: none;
+
+            font-family: "Jua", sans-serif;
+
+            height: 90%;
+            width: 13%;
+
+            display: flex;
+            float: left;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .block1 {
+            text-decoration-line: underline;
+            background-color: white;
+        }
+
+        .block2{
+            background-color: white;
+        }
+
+        .block3{
+            background-color: white;
+            float: right;
+        }
+
+        .block4{
+            background-color: white;
+            float: left;
+        }
+
+        .block5{
+            background-color: white;
+            float: left;
+
+        }
+
+        section {
+            background-color: white;
+
+            height: 90%;
+            width: 87%;
+
+            float: left;
+            justify-content: center;
+            align-content: center;
+            /*text-align: center;*/
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 95px;
+        }
+
+        .havis {
+            font-family: "Shrikhand", serif;
+            font-size: 90px;
+        }
+
+        .since {
+            font-family: "Gochi Hand", cursive;
+            padding-bottom: 40px;
+            align-items: end;
+        }
+
+        aside span {
+            margin: 15px;
+
+            font-size: 25px;
+        }
+
+    </style>
 </head>
+
+<header onclick="location.href='/main/home'">
+    <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
+    <span class="header havis">HAVIS</span>
+    <span class="header since">since2024</span>
+</header>
+
 <body>
 
-    <h1>카테고리관리</h1>
+<aside>
+    <span id="mypage" onclick="location.href='/member/mypage'">⚽마이페이지</span>
+    <span>🥎공지사항</span>
+    <span id="category" onclick="location.href='/category/categoryList'">🏈카테고리</span>
+    <span>⚾전체 글 조회</span>
+    <span>🏀자유게시판</span>
+    <span>🎱모임게시판</span>
+    <span>🏉취미 활동</span>
+    <span>🎃건의와 신고</span>
+    <span>🎯FAQ</span>
+    <span onclick="location.href='/auth/logout'">🏐로그아웃</span>
+</aside>
+        <section>
+        <div class="block1"> <h1>카테고리관리</h1></div>
+        <div class="block2"><h3>카테고리를 추가/수정/삭제 할 수 있습니다.</h3></div>
 
-    <h3>카테고리를 추가/수정/삭제 할 수 있습니다.</h3>
-
+    <div class="block3">
     <form id="createForm" action="/category/create" method="get">
         <button type="submit">카테고리 등록</button>
     </form>
-
-<form id="searchForm" action="/category/categoryList" method="get">
+    </div>
+            <div class="block4">
+            <form id="searchForm" action="/category/categoryList" method="get">
     <label for="categoryNo"></label>
     <input type="number" id="categoryNo" name="categoryNo" required />
     <button type="submit">카테고리 검색</button>
 </form>
+            </div>
 
     <br>
 
-<div th:if="${category != null}">
+<div class="block5" th:if="${category != null}">
     <h3>번호: <span th:text="${category.categoryNo}"></span></h3>
     <h3>카테고리명: <span th:text="${category.categoryName}"></span></h3>
 </div>
 
-<div>
     <table>
         <thead>
         <tr>
@@ -58,7 +185,6 @@
         </tr>
         </tbody>
     </table>
-</div>
 
 <div id="paging">
 
@@ -86,5 +212,7 @@
     </button>
 
 </div>
+        </section>
 </body>
+
 </html>
