@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>게시판 목록</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&family=Jua&display=swap"
+          rel="stylesheet">
     <style>
         table {
             margin: auto;
@@ -11,27 +15,18 @@
             border-collapse: collapse;
             border-top: none;
         }
+
         .header {
             /*background-color: rgb(218, 231, 255);*/
             text-align: center;
         }
+
         .table td, .table th {
             border-bottom: 1px lightgray solid;
             height: 30px;
             font-size: 14px;
         }
-        .postNo {
-            width: 50px;
-        }
-        .postTitle {
-            width: 200px;
-        }
-        .postText {
-            text-align: center;
-        }
-        .postText .postTitle {
-            text-align: left;
-        }
+
         button {
             width: 100px;
             height: 40px;
@@ -42,6 +37,7 @@
             padding-left: 10px;
             background-color: rgb(164, 199, 255);
         }
+
         button:active {
             width: 100px;
             height: 40px;
@@ -65,12 +61,17 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-
-            button{
-
-            }
         }
 
+        header {
+            height: 10%;
+            width: 100vw;
+
+            position: fixed;
+            top: 0;
+
+            cursor: pointer;
+        }
 
         .havis {
             font-family: "Shrikhand", serif;
@@ -79,7 +80,6 @@
 
         .since {
             font-family: "Gochi Hand", cursive;
-            padding-bottom: 40px;
             align-items: end;
         }
 
@@ -87,41 +87,29 @@
             position: fixed;
             bottom: 300px;
         }
-
-
-        .table {
-
-
-
-        }
-
-        .kid {
-
-            position: fixed;
-            top: 0px;
-
-        }
-
-
     </style>
-
-    <header onclick="location.href='/main/home'" class="kid">
-        <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
-        <span class="header havis">HAVIS</span>
-        <span class="header since">since2024</span>
-    </header>
-
 </head>
+
+<header onclick="location.href='/post/postMain'" class="kid">
+    <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
+    <span class="header havis">HAVIS</span>
+    <span class="header since">since2024</span>
+</header>
+
 <body>
 <form th:action="@{/post/postList}" th:method="post">
     <table class="table">
-        <tr><td colspan="4"><h2>게시판 목록</h2></td></tr>
+        <tr>
+            <td colspan="4"><h2>게시판 목록</h2></td>
+        </tr>
+
         <tr class="header">
             <th>번호</th>
             <th>제목</th>
             <th>내용</th>
             <th>작성자</th>
         </tr>
+
         <tr th:each="post : ${postList}">
             <td th:text="${ post.postNo }"></td>
             <td th:text="${ post.postTitle }"></td>
@@ -129,17 +117,14 @@
             <td th:text="${ post.member }"></td>
 
         </tr>
-
-
     </table>
-
 </form>
 
 <div class="postSearch">
     <form id="searchForm" action="postList" method="get">
         <label for="postNo">게시물 번호</label>
-        <input type="number" id="postNo" name="postNo" required />
-        <button type="submit" >조회하기</button>
+        <input type="number" id="postNo" name="postNo" required/>
+        <button type="submit">조회하기</button>
     </form>
 </div>
 

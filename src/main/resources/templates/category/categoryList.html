@@ -38,12 +38,15 @@
             user-select: none;
             background: none;
 
-            height: 10vh;
+            height: 10%;
+            width: 100vw;
 
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
+
+            cursor: pointer;
         }
 
         body {
@@ -60,7 +63,7 @@
         }
 
         .container {
-            height: 100vh;
+            height: 80vh;
             width: 80vw;
 
             position: absolute;
@@ -90,6 +93,21 @@
             text-align: center;
         }
 
+        button {
+            cursor: pointer;
+        }
+
+        button:hover {
+            position: relative;
+            top: 1px;
+            right: 1px;
+        }
+
+        button:active {
+            position: relative;
+            top: 2px;
+            right: 2px;
+        }
     </style>
 </head>
 
@@ -111,7 +129,7 @@
         <form action="/category/create" method="post">
             <div>
                 <input type="text" name="categoryName" id="categoryName">
-                <button type="submit">카테코리등록</button>
+                <button type="submit">카테고리 등록</button>
             </div>
         </form>
     </div>

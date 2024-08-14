@@ -29,13 +29,12 @@ public class PostController {
     @GetMapping("/postCreate")
     public String post() {
         return "post/postCreate";
-
     }
 
     @PostMapping("/postCreate")
     public String post(PostRegisterDTO postRegisterDTO) {
         postService.createPost(postRegisterDTO);
-        return "redirect:/";
+        return "redirect:/post/postList";
     }
 
     @GetMapping("/postDelete")

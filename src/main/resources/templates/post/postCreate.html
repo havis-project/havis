@@ -8,6 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&family=Jua&display=swap"
           rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+            font-size: 20px;
+        }
 
         body {
             background-image: url('/images/pastelBackground.jpg');
@@ -18,13 +24,24 @@
             width: 100vw;
 
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+        }
 
-            button{
+        div {
+            margin: 20px;
+        }
 
-            }
+        header {
+            height: 10%;
+            width: 100vw;
+
+            position: fixed;
+            top: 0;
+
+            cursor: pointer;
         }
 
         .havis {
@@ -34,35 +51,44 @@
 
         .since {
             font-family: "Gochi Hand", cursive;
-            padding-bottom: 40px;
             align-items: end;
         }
 
-        .table{
-
-            position: absolute;
-            left:1000px;
-            top:1000px;
-
+        button {
+            cursor: pointer;
         }
 
-        .postCreate{
-
-            float: left;
-
+        button:hover {
+            position: relative;
+            top: 1px;
+            right: 1px;
         }
 
+        button:active {
+            position: relative;
+            top: 2px;
+            right: 2px;
+        }
 
+        #postTitle {
+            width: 500px;
+        }
 
+        #postText {
+            height: 400px;
+            width: 500px;
 
+            word-break: break-all;
+            word-wrap: break-word;
+        }
 
-
+        .textbox {
+            display: flex;
+        }
     </style>
-
-
 </head>
 
-<header onclick="location.href='/main/home'">
+<header onclick="location.href='/post/postMain'">
     <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
     <span class="header havis">HAVIS</span>
     <span class="header since">since2024</span>
@@ -70,30 +96,20 @@
 
 <body>
 <form th:action="@{/post/postCreate}" th:method="post">
-    <table class="table">
-        <tr><td colspan="2"><h2>취미자랑게시판</h2></td></tr>
-<!--        <tr class="header">-->
-<!--            <td class="postNo">번호</td>-->
-<!--            <td class="postTitle">제목</td>-->
-<!--            <td class="postText">내용</td>-->
-<!--            <td class="member">작성자</td>-->
-<!--            &lt;!&ndash;        <td class="postDate">작성날짜</td>&ndash;&gt;-->
-<!--        </tr>-->
-        <div class="postCreate">
-            <label>글 제목 : </label>
-            <input type="text" name="postTitle" id="postTitle">
-            <label>글 내용 : </label>
-            <input type="text" name="postText" id="postText">
-<!--            <label>작성자 : </label>-->
-<!--            <input type="text" name="member" id="member">-->
-        </div>
-        <button type="submit">
-            글 작성
-
-
-        </button>
-    </table>
-    </form>
+    <div>
+        <label>글 제목</label>
+        <input type="text" name="postTitle" id="postTitle">
+    </div>
+    <div class="textbox">
+        <label>글 내용</label>
+        <textarea type="text" name="postText" id="postText"></textarea>
+        <!--            <label>작성자 : </label>-->
+        <!--            <input type="text" name="member" id="member">-->
+    </div>
+    <div>
+        <button type="submit">글 작성</button>
+    </div>
+</form>
 </body>
 
 </html>

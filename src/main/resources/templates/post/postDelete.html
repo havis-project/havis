@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>postDelete</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&family=Jua&display=swap"
+          rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+            font-size: 20px;
+        }
 
         body {
             background-image: url('/images/pastelBackground.jpg');
@@ -19,9 +28,19 @@
             justify-content: center;
             text-align: center;
 
-            button{
+            button {
 
             }
+        }
+
+        header {
+            height: 10%;
+            width: 100vw;
+
+            position: fixed;
+            top: 0;
+
+            cursor: pointer;
         }
 
         .havis {
@@ -31,24 +50,32 @@
 
         .since {
             font-family: "Gochi Hand", cursive;
-            padding-bottom: 40px;
             align-items: end;
         }
 
         .postDelete {
-
             float: left;
-
         }
 
+        button {
+            cursor: pointer;
+        }
 
+        button:hover {
+            position: relative;
+            top: 1px;
+            right: 1px;
+        }
 
-
-
-        </style>
-
+        button:active {
+            position: relative;
+            top: 2px;
+            right: 2px;
+        }
+    </style>
 </head>
-<header onclick="location.href='/main/home'" class="kid">
+
+<header onclick="location.href='/post/postMain'" class="kid">
     <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
     <span class="header havis">HAVIS</span>
     <span class="header since">since2024</span>
@@ -59,10 +86,7 @@
 <form action="/post/postDelete" class="postDelete" method="post">
     <label>삭제할 게시글의 번호 : </label>
     <input type="number" min="1" name="postNo">
-    <input type="submit" value="전송">
+    <button type="submit">전송</button>
 </form>
-
-
-
 </body>
 </html>

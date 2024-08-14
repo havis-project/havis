@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>postUpdate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Shrikhand&family=Jua&display=swap"
+          rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+            font-size: 20px;
+        }
 
         body {
             background-image: url('/images/pastelBackground.jpg');
@@ -14,13 +24,39 @@
             width: 100vw;
 
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+        }
 
-            button{
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-            }
+        input {
+            margin: 20px;
+            width: 500px;
+        }
+
+        textarea {
+            margin: 20px;
+
+            height: 300px;
+            width: 500px;
+        }
+
+        header {
+            height: 10%;
+            width: 100vw;
+
+            position: fixed;
+            top: 0;
+
+            cursor: pointer;
         }
 
         .havis {
@@ -30,26 +66,38 @@
 
         .since {
             font-family: "Gochi Hand", cursive;
-            padding-bottom: 40px;
             align-items: end;
         }
 
+        button {
+            cursor: pointer;
+        }
+
+        button:hover {
+            position: relative;
+            top: 1px;
+            right: 1px;
+        }
+
+        button:active {
+            position: relative;
+            top: 2px;
+            right: 2px;
+        }
     </style>
-
-    <header onclick="location.href='/main/home'" class="kid">
-        <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
-        <span class="header havis">HAVIS</span>
-        <span class="header since">since2024</span>
-    </header>
-
-
 </head>
-<body>
 
+<header onclick="location.href='/post/postMain'" class="kid">
+    <span class="header haviskid"><img width="65" height="85" src="/images/haviskid.png" alt="haviskid"></span>
+    <span class="header havis">HAVIS</span>
+    <span class="header since">since2024</span>
+</header>
+
+<body>
 <form action="/post/postUpdate" method="POST">
-    <input type="text" name="postNo" value="1">
-    <input type="text" name="postTitle" placeholder="Title">
-    <textarea name="postText" placeholder="Text"></textarea>
+    <input type="text" name="postNo" id="postNo" value="1">
+    <input type="text" name="postTitle" id="postTitle" placeholder="Title">
+    <textarea name="postText" id="postText" placeholder="Text"></textarea>
     <button type="submit">게시글 수정하기</button>
 </form>
 
@@ -59,6 +107,5 @@
 <!--    <textarea name="postText" placeholder="Text">수정 내용</textarea>-->
 <!--    <button type="submit">수정 </button>-->
 <!--</form>-->
-
 </body>
 </html>
